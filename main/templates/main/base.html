@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTAML Universe</title>
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+     <!-- Link the Africa-specific CSS -->
+  <link rel="stylesheet" href="{% static 'main/CSS/africa.css' %}">
+ <!-- Legal CSS for styling legal thumbnails, etc. -->
+  <link rel="stylesheet" href="{% static 'main/CSS/legal.css' %}">
+    <!-- Business CSS for styling Business thumbnails, etc. -->
+<link rel="stylesheet" href="{% static 'main/CSS/business.css' %}">
+     <!-- Scholarship CSS for styling Scholarship thumbnails, etc. -->
+  <link rel="stylesheet" href="{% static 'main/CSS/scholarship.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="main-header">
+    <div class="logo-container">
+      <img src="{% static 'main/images/Universe.png' %}" alt="BTAML Universe Logo" class="logo">
+      <h1 class="site-title">
+        <a href="{% url 'home' %}" style="color: #ffffff; text-decoration: none;">BTAML Universe</a>
+      </h1>
+    </div>
+  <nav class="navbar">
+  <ul>
+    <li>
+      <!-- Africa with Dropdown Regions -->
+<a href="{% url 'africa_home' %}" class="has-dropdown">Africa</a>
+<ul class="dropdown-menu">
+  <li><a href="{% url 'eastern_african' %}">Eastern African Region</a></li>
+  <li><a href="{% url 'western_african' %}">Western African Region</a></li>
+  <li><a href="{% url 'northern_african' %}">Northern African Region</a></li>
+  <li><a href="{% url 'southern_african' %}">Southern African Region</a></li>
+  <li><a href="{% url 'central_african' %}">Central African Region</a></li>
+</ul>
+
+    </li>
+    <li>
+      <!-- Legal with Dropdown items -->
+<a href="{% url 'legal' %}" class="has-dropdown">Legal</a>
+<ul class="dropdown-menu">
+  <li><a href="{% url 'terms' %}">Terms of Use</a></li>
+  <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+  <li><a href="{% url 'investment' %}">Investment Disclaimers</a></li>
+  <li><a href="{% url 'compliance' %}">Regulatory Compliance</a></li>
+  <li><a href="{% url 'contact_legal' %}">Contact Legal</a></li>
+</ul>
+    </li>
+    <li>
+      <!-- Business & Investments with Dropdown items -->
+<a href="{% url 'business' %}" class="has-dropdown">Business & Investments</a>
+<ul class="dropdown-menu">
+  <li><a href="{% url 'agriculture' %}">Agriculture & Agribusiness</a></li>
+  <li><a href="{% url 'mining_energy' %}">Mining & Energy</a></li>
+  <li><a href="{% url 'technology' %}">Technology & Fintech</a></li>
+  <li><a href="{% url 'infrastructure' %}">Infrastructure & Logistics</a></li>
+  <li><a href="{% url 'sustainable' %}">Sustainable Business Practices</a></li>
+  <li><a href="{% url 'market_entry' %}">Market Entry Strategies</a></li>
+  <li><a href="{% url 'risk_management' %}">Risk Management</a></li>
+  <li><a href="{% url 'market_trends' %}">Market Trends & Analysis</a></li>
+  <li class="divider"></li>
+  <li><a href="{% url 'emerging_industries' %}">Emerging Industries</a></li>
+  <li><a href="{% url 'case_studies' %}">Case Studies</a></li>
+</ul>
+    </li>
+    <li>
+      <!-- Scholarship -->
+<a href="{% url 'scholarship' %}">Scholarship</a>
+    </li>
+    <li>
+      <!-- Security Updates -->
+      <a href="{% url 'security' %}">Security Updates</a>
+
+    </li>
+    <li>
+      <!-- Services -->
+    <a href="{% url 'services' %}">Our Services</a>
+    </li>
+    <!-- Login and Register as Buttons -->
+    <li><button class="login-btn">Login</button></li>
+    <li><button class="register-btn">Register</button></li>
+  </ul>
+</nav>
+  </header>
+
+  <!-- Main Content Block -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- Footer Section -->
+  {% block footer %}
+  <footer class="footer">
+    <!-- Top Section: Information & Follow Us -->
+    <div class="footer-top">
+      <div class="footer-info">
+        <h3>Information you can trust</h3>
+        <p>
+          BTAML UNIVERSE is your trusted source for reliable news and insightful analysis.
+          We deliver timely updates on business, finance, and international developments
+          so you can be well-informed.
+        </p>
+      </div>
+      <div class="footer-follow">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" title="X (formerly Twitter)"><i class="fab fa-x"></i></a>
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="mailto:consultbtaml@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+<!-- Newsletter Section -->
+<div class="footer-newsletter">
+  <div class="newsletter-content">
+    <h3>Newsletter</h3>
+    <p>
+      Have questions or need help? Use the form to reach out and we will be in touch with you as quickly as possible.
+    </p>
+    <form action="#" method="post" class="newsletter-form">
+      <input type="email" name="email" placeholder="Email*" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+  <div class="newsletter-logo">
+    <img src="{% static 'main/images/Universe.png' %}" alt="BTAML Universe Logo">
+  </div>
+</div>
+
+    <!-- Our Services and Contact Section -->
+    <div class="footer-services-contact">
+      <div class="footer-services">
+        <h3>Our Services</h3>
+        <ul>
+          <li>SWOT Analysis, MOST Analysis, PESTLE Analysis.</li>
+          <li>Brainstorming, Mind Mapping, Process Design.</li>
+          <li>Field Research and Survey.</li>
+          <li>Voice Recording (African Languages).</li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Phone: +86(0)15810743803 | +86(0)13269127008</li>
+          <li>Email: <a href="mailto:consultbtaml@gmail.com">consultbtaml@gmail.com</a></li>
+          <li>Website: <a href="http://www.btamluniverse.com" target="_blank">www.btamluniverse.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="footer-bottom">
+      <p>Access exclusive business insights, industry news, and comprehensive analytical tools through a personalized workflow experience available on desktop, web, and mobile.</p>
+      <p>&copy; 2025 BTAML UNIVERSE. All rights reserved.</p>
+    </div>
+  </footer>
+  {% endblock %}
+
+  <script src="{% static 'main/js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Africa</title>
+  <link rel="stylesheet" href="{% static 'main/CSS/style.css' %}">
+</head>
+<body>
+  <header>
+    <!-- Include your header here or use your common header if you later integrate with Django template inheritance -->
+    <h1>Africa Overview</h1>
+  </header>
+  <main>
+    <p>This is the Africa page. Here you can include an overview of Africa as a whole or links to specific regions.</p>
+    <!-- List out links to sub-regions -->
+    <ul>
+      <li><a href="eastern_african.html">Eastern African Region</a></li>
+      <li><a href="western_african.html">Western African Region</a></li>
+      <li><a href="northern_african.html">Northern African Region</a></li>
+      <li><a href="southern_african.html">Southern African Region</a></li>
+      <li><a href="central_african.html">Central African Region</a></li>
+    </ul>
+  </main>
+  <footer>
+    <p>Africa footer content here.</p>
+  </footer>
+</body>
+</html>

@@ -1,1 +1,25 @@
-'{  "version": 2,  "builds": [    {      "src": "manage.py",      "use": "@vercel/python",      "config": {        "maxLambdaSize": "50mb"      }    }  ],  "routes": [    {      "src": "/(.*)",      "dest": "/manage.py"    }  ]}' 
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "manage.py",
+        "use": "@vercel/python",
+        "config": {
+          "maxLambdaSize": "50mb"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/manage.py"
+      }
+    ],
+    "env": {
+      "DJANGO_SECRET_KEY": "your-production-secret-key",
+      "DEBUG": "False",
+      "ALLOWED_HOSTS": "your-app-name.vercel.app,localhost"
+    },
+    "buildCommand": "python manage.py collectstatic --noinput"
+  }
+  

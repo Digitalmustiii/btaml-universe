@@ -1,0 +1,467 @@
+/* TradingView Widget Section Styles */
+.tradingview-widget-section {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  
+  .tradingview-widget-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f9f9f9 !important;
+    padding: 5px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .tradingview-widget-container__widget {
+    flex: 1;
+    background-color: #f9f9f9 !important;
+    overflow: hidden;
+    min-height: 46px;
+  }
+  
+  .tradingview-widget-copyright {
+    margin-left: 5px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  
+  /* Africa Thumbnail Section Styles */
+  .africa-thumbnail-section {
+    margin-bottom: 60px;
+  }
+  
+  .africa-thumbnail-section header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .africa-thumbnail-section h2 {
+    font-size: 2.2rem;
+    color: #1D5C2E;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .africa-thumbnail-section h2:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: #8FD694;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  
+  .africa-thumbnail-section p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .africa-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .region-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .region-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+  
+  .region-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 3px solid #8FD694;
+  }
+  
+  .region-card h3 {
+    font-size: 1.3rem;
+    color: #1D5C2E;
+    margin: 20px 20px 10px;
+  }
+  
+  .region-card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0 20px 20px;
+    line-height: 1.5;
+  }
+  
+  .region-card .btn {
+    display: block;
+    background-color: #1D5C2E;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 20px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .region-card .btn:hover {
+    background-color: #144020;
+  }
+  
+  /* Business & Investments Thumbnail Section Styles */
+  .business-thumbnail-section {
+    margin-bottom: 60px;
+    padding: 40px 0;
+    position: relative;
+  }
+  
+  .business-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .business-header h2 {
+    font-size: 2.2rem;
+    color: #1D5C2E;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .business-header h2:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: #8FD694;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  
+  .business-header p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .business-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .business-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .business-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+  
+  .business-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid #8FD694;
+  }
+  
+  .business-card h3 {
+    font-size: 1.3rem;
+    color: #1D5C2E;
+    margin: 20px 20px 10px;
+  }
+  
+  .business-card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0 20px 20px;
+    line-height: 1.5;
+  }
+  
+  .business-card .btn {
+    display: block;
+    background-color: #1D5C2E;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 20px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .business-card .btn:hover {
+    background-color: #144020;
+  }
+  
+  /* Scholarship Section Styles */
+  .scholarship-thumbnail-section {
+    margin-bottom: 60px;
+    padding: 20px 0;
+  }
+  
+  .scholarship-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .scholarship-header h2 {
+    font-size: 2.2rem;
+    color: #1D5C2E;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .scholarship-header h2:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: #8FD694;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  
+  .scholarship-header p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .scholarship-card {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .scholarship-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+  
+  .scholarship-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 3px solid #8FD694;
+  }
+  
+  .scholarship-card h3 {
+    font-size: 1.5rem;
+    color: #1D5C2E;
+    margin: 25px 25px 15px;
+  }
+  
+  .scholarship-card p {
+    font-size: 1rem;
+    color: #555;
+    margin: 0 25px 25px;
+    line-height: 1.6;
+  }
+  
+  .scholarship-card .btn {
+    display: block;
+    background-color: #1D5C2E;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 25px 25px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .scholarship-card .btn:hover {
+    background-color: #144020;
+  }
+  
+  /* Legal Information Section Styles */
+  .legal-information-section {
+    margin-bottom: 60px;
+    padding: 40px 0;
+    background-color: #f5f9f6;
+    border-radius: 15px;
+  }
+  
+  .legal-information-section header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .legal-information-section h2 {
+    font-size: 2.2rem;
+    color: #1D5C2E;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  
+  .legal-information-section h2:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: #8FD694;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+  
+  .legal-information-section p {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .legal-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .legal-details article {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .legal-details article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .legal-details h3 {
+    font-size: 1.3rem;
+    color: #1D5C2E;
+    margin-bottom: 15px;
+  }
+  
+  .legal-details p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .legal-details .btn {
+    display: inline-block;
+    background-color: #1D5C2E;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .legal-details .btn:hover {
+    background-color: #144020;
+  }
+  
+  /* Responsive Styles for Homepage Components */
+  @media (max-width: 900px) {
+    .africa-thumbnail-section h2,
+    .business-header h2,
+    .scholarship-header h2,
+    .legal-information-section h2 {
+      font-size: 1.8rem;
+    }
+    
+    .africa-cards,
+    .business-cards,
+    .legal-details {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .scholarship-card {
+      max-width: 90%;
+    }
+    
+    .scholarship-image {
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .africa-thumbnail-section h2,
+    .business-header h2,
+    .scholarship-header h2,
+    .legal-information-section h2 {
+      font-size: 1.6rem;
+    }
+    
+    .africa-cards,
+    .business-cards,
+    .legal-details {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .region-card img,
+    .business-card img {
+      height: 140px;
+    }
+    
+    .scholarship-image {
+      height: 200px;
+    }
+    
+    .scholarship-card {
+      max-width: 100%;
+    }
+    
+    .africa-thumbnail-section p,
+    .business-header p,
+    .scholarship-header p,
+    .legal-information-section p {
+      font-size: 1rem;
+    }
+    
+    .legal-information-section {
+      padding: 30px 15px;
+    }
+  }

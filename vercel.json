@@ -1,25 +1,34 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "handler.py",
-        "use": "@vercel/python",
-        "config": {
-          "maxLambdaSize": "50mb"
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "handler.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/handler.py"
-      }
-    ],
-    "env": {
-      "DJANGO_SECRET_KEY": "your-production-secret-key",
-      "DEBUG": "False",
-      "ALLOWED_HOSTS": "btamluniverse.vercel.app,localhost"
     },
-    "buildCommand": "python manage.py collectstatic --noinput"
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/handler.py"
+    }
+  ],
+  "env": {
+    "DJANGO_SECRET_KEY": "your-production-secret-key",
+    "DEBUG": "False",
+    "ALLOWED_HOSTS": "btamluniverse.vercel.app,localhost"
   }
-  
+}

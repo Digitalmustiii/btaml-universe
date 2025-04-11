@@ -14,7 +14,7 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS - load from an environment variable as a comma-separated string.
 # In production, set this to your deployed domains (e.g., "your-app-name.vercel.app,www.yourdomain.com").
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1, localhost, btamluniverse.vercel.app').split(',')
 
 # Application definition
 INSTALLED_APPS = [

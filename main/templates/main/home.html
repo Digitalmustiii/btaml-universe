@@ -4,94 +4,93 @@
 {% block content %}
 <meta charset="UTF-8">
 
-<!-- TradingView Widget Section -->
-<section class="tradingview-widget-section">
-  {% verbatim %}
-  <!-- TradingView Widget BEGIN -->
-  <div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    <div class="tradingview-widget-copyright">
-      <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-        <span class="blue-text">Track all markets on TradingView</span>
-      </a>
+  <!-- TradingView Widget Section -->
+  <section class="tradingview-widget-section">
+    {% verbatim %}
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright">
+        <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+          <span class="blue-text">Track all markets on TradingView</span>
+        </a>
+      </div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+        "symbols": [
+          { "proName": "FX_IDC:EURUSD", "title": "EUR to USD" },
+          { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
+          { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" },
+          { "description": "AAPL", "proName": "NASDAQ:AAPL" },
+          { "description": "AMZN", "proName": "NASDAQ:AMZN" },
+          { "description": "MSFT", "proName": "NASDAQ:MSFT" },
+          { "description": "GOOGL", "proName": "NASDAQ:GOOGL" },
+          { "description": "GOLD", "proName": "CAPITALCOM:GOLD" }
+        ],
+        "showSymbolLogo": true,
+        "isTransparent": true,
+        "displayMode": "adaptive",
+        "colorTheme": "light",
+        "locale": "en"
+      }
+      </script>
     </div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-    {
-      "symbols": [
-        { "proName": "FX_IDC:EURUSD", "title": "EUR to USD" },
-        { "proName": "BITSTAMP:BTCUSD", "title": "Bitcoin" },
-        { "proName": "BITSTAMP:ETHUSD", "title": "Ethereum" },
-        { "description": "AAPL", "proName": "NASDAQ:AAPL" },
-        { "description": "AMZN", "proName": "NASDAQ:AMZN" },
-        { "description": "MSFT", "proName": "NASDAQ:MSFT" },
-        { "description": "GOOGL", "proName": "NASDAQ:GOOGL" },
-        { "description": "GOLD", "proName": "CAPITALCOM:GOLD" }
-      ],
-      "showSymbolLogo": true,
-      "isTransparent": true,
-      "displayMode": "adaptive",
-      "colorTheme": "light",
-      "locale": "en"
-    }
-    </script>
-  </div>
-  <!-- TradingView Widget END -->
-  {% endverbatim %}
-</section>
+    <!-- TradingView Widget END -->
+    {% endverbatim %}
+  </section>
 
-<!-- Africa Thumbnail Section -->
-<section class="africa-thumbnail-section">
-  <!-- Section Header -->
-  <header>
-    <h2>Africa</h2>
-    <p>BTAML Universe provides you with the latest news and detailed analysis on every corner of the African continent.</p>
-  </header>
+  <!-- Africa Thumbnail Section -->
+  <section class="africa-thumbnail-section">
+    <!-- Section Header -->
+    <header>
+      <h2>Africa</h2>
+      <p>BTAML Universe provides you with the latest news and detailed analysis on every corner of the African continent.</p>
+    </header>
 
-  <!-- Region Cards Container -->
-  <div class="africa-cards">
-    <!-- Western African Region Card -->
-    <div class="region-card">
-      <img src="{% static 'images/western_africa.jpg' %}" alt="Western African Region">
-      <h3>Western African Region</h3>
-      <p>Discover dynamic markets, cultural richness, and emerging tech in Western Africa.</p>
-      <a href="{% url 'western_african' %}" class="btn">Learn More</a>
+    <!-- Region Cards Container -->
+    <div class="africa-cards">
+      <!-- Western African Region Card -->
+      <div class="region-card">
+        <img src="{% static 'main/images/western_africa.jpg' %}" alt="Western African Region">
+        <h3>Western African Region</h3>
+        <p>Discover dynamic markets, cultural richness, and emerging tech in Western Africa.</p>
+        <a href="{% url 'western_african' %}" class="btn">Learn More</a>
+      </div>
+
+      <!-- Eastern African Region Card -->
+      <div class="region-card">
+        <img src="{% static 'main/images/eastern_africa.jpg' %}" alt="Eastern African Region">
+        <h3>Eastern African Region</h3>
+        <p>Explore robust growth, innovation, and urban transformation in Eastern Africa.</p>
+        <a href="{% url 'eastern_african' %}" class="btn">Learn More</a>
+      </div>
+
+      <!-- Northern African Region Card -->
+      <div class="region-card">
+        <img src="{% static 'main/images/northern_africa.jpg' %}" alt="Northern African Region">
+        <h3>Northern African Region</h3>
+        <p>Gain insights into historical legacies, economic developments, and evolving cultures in Northern Africa.</p>
+        <a href="{% url 'northern_african' %}" class="btn">Learn More</a>
+      </div>
+
+      <!-- Central African Region Card -->
+      <div class="region-card">
+        <img src="{% static 'main/images/central_africa.jpg' %}" alt="Central African Region">
+        <h3>Central African Region</h3>
+        <p>Uncover investment potentials, resource strategies, and market opportunities in Central Africa.</p>
+        <a href="{% url 'central_african' %}" class="btn">Learn More</a>
+      </div>
+
+      <!-- Southern African Region Card -->
+      <div class="region-card">
+        <img src="{% static 'main/images/southern_africa.jpg' %}" alt="Southern African Region">
+        <h3>Southern African Region</h3>
+        <p>Discover sustainable practices, innovative industries, and vibrant cultures across Southern Africa.</p>
+        <a href="{% url 'southern_african' %}" class="btn">Learn More</a>
+      </div>
     </div>
-
-    <!-- Eastern African Region Card -->
-    <div class="region-card">
-      <img src="{% static 'images/eastern_africa.jpg' %}" alt="Eastern African Region">
-      <h3>Eastern African Region</h3>
-      <p>Explore robust growth, innovation, and urban transformation in Eastern Africa.</p>
-      <a href="{% url 'eastern_african' %}" class="btn">Learn More</a>
-    </div>
-
-    <!-- Northern African Region Card -->
-    <div class="region-card">
-      <img src="{% static 'images/northern_africa.jpg' %}" alt="Northern African Region">
-      <h3>Northern African Region</h3>
-      <p>Gain insights into historical legacies, economic developments, and evolving cultures in Northern Africa.</p>
-      <a href="{% url 'northern_african' %}" class="btn">Learn More</a>
-    </div>
-
-    <!-- Central African Region Card -->
-    <div class="region-card">
-      <img src="{% static 'images/central_africa.jpg' %}" alt="Central African Region">
-      <h3>Central African Region</h3>
-      <p>Uncover investment potentials, resource strategies, and market opportunities in Central Africa.</p>
-      <a href="{% url 'central_african' %}" class="btn">Learn More</a>
-    </div>
-
-    <!-- Southern African Region Card -->
-    <div class="region-card">
-      <img src="{% static 'images/southern_africa.jpg' %}" alt="Southern African Region">
-      <h3>Southern African Region</h3>
-      <p>Discover sustainable practices, innovative industries, and vibrant cultures across Southern Africa.</p>
-      <a href="{% url 'southern_african' %}" class="btn">Learn More</a>
-    </div>
-  </div>
-</section>
-
-<!-- Business & Investments Thumbnail Section -->
+  </section>
+  <!-- Business & Investments Thumbnail Section -->
 <section class="business-thumbnail-section">
   <!-- Section Header -->
   <header class="business-header">
@@ -106,7 +105,7 @@
   <div class="business-cards">
     <!-- Agriculture & Agribusiness Card -->
     <div class="business-card">
-      <img src="{% static 'images/agriculture.jpg' %}" alt="Agriculture & Agribusiness">
+      <img src="{% static 'main/images/agriculture.jpg' %}" alt="Agriculture & Agribusiness">
       <h3>Agriculture & Agribusiness</h3>
       <p>Discover key trends and emerging opportunities in Africa's primary economic sector.</p>
       <a href="{% url 'agriculture' %}" class="btn">Learn More</a>
@@ -114,7 +113,7 @@
 
     <!-- Mining & Energy Card -->
     <div class="business-card">
-      <img src="{% static 'images/mining_energy.jpg' %}" alt="Mining & Energy">
+      <img src="{% static 'main/images/mining_energy.jpg' %}" alt="Mining & Energy">
       <h3>Mining & Energy</h3>
       <p>Explore resource-rich regions and find investment opportunities within Africa's mining and energy sectors.</p>
       <a href="{% url 'mining_energy' %}" class="btn">Learn More</a>
@@ -122,7 +121,7 @@
 
     <!-- Technology & Fintech Card -->
     <div class="business-card">
-      <img src="{% static 'images/technology.jpg' %}" alt="Technology & Fintech">
+      <img src="{% static 'main/images/technology.jpg' %}" alt="Technology & Fintech">
       <h3>Technology & Fintech</h3>
       <p>Learn about Africa’s fast-growing tech startups, fintech innovations, and digital transformation.</p>
       <a href="{% url 'technology' %}" class="btn">Learn More</a>
@@ -130,7 +129,7 @@
 
     <!-- Infrastructure & Logistics Card -->
     <div class="business-card">
-      <img src="{% static 'images/infrastructure.jpg' %}" alt="Infrastructure & Logistics">
+      <img src="{% static 'main/images/infrastructure.jpg' %}" alt="Infrastructure & Logistics">
       <h3>Infrastructure & Logistics</h3>
       <p>Find insights on critical transport and logistic developments, including roads, ports, and more.</p>
       <a href="{% url 'infrastructure' %}" class="btn">Learn More</a>
@@ -138,7 +137,7 @@
 
     <!-- Sustainable Business Practices Card -->
     <div class="business-card">
-      <img src="{% static 'images/sustainable.jpg' %}" alt="Sustainable Business Practices">
+      <img src="{% static 'main/images/sustainable.jpg' %}" alt="Sustainable Business Practices">
       <h3>Sustainable Business Practices</h3>
       <p>Explore green initiatives and ESG strategies driving sustainable growth in Africa.</p>
       <a href="{% url 'sustainable' %}" class="btn">Learn More</a>
@@ -146,7 +145,7 @@
 
     <!-- Market Entry Strategies Card -->
     <div class="business-card">
-      <img src="{% static 'images/market_entry.jpg' %}" alt="Market Entry Strategies">
+      <img src="{% static 'main/images/market_entry.jpg' %}" alt="Market Entry Strategies">
       <h3>Market Entry Strategies</h3>
       <p>Access expert guidance for startups and MNCs planning to expand into African markets.</p>
       <a href="{% url 'market_entry' %}" class="btn">Learn More</a>
@@ -154,7 +153,7 @@
 
     <!-- Risk Management Card -->
     <div class="business-card">
-      <img src="{% static 'images/risk_management.jpg' %}" alt="Risk Management">
+      <img src="{% static 'main/images/risk_management.jpg' %}" alt="Risk Management">
       <h3>Risk Management</h3>
       <p>Understand political, currency, and supply-chain risks and how to mitigate them.</p>
       <a href="{% url 'risk_management' %}" class="btn">Learn More</a>
@@ -162,7 +161,7 @@
 
     <!-- Market Trends & Analysis Card -->
     <div class="business-card">
-      <img src="{% static 'images/market_trends.jpg' %}" alt="Market Trends & Analysis">
+      <img src="{% static 'main/images/market_trends.jpg' %}" alt="Market Trends & Analysis">
       <h3>Market Trends & Analysis</h3>
       <p>Stay updated with in-depth market analyses and the latest business trends across Africa.</p>
       <a href="{% url 'market_trends' %}" class="btn">Learn More</a>
@@ -170,28 +169,73 @@
 
     <!-- Emerging Industries Card -->
     <div class="business-card">
-      <img src="{% static 'images/emerging_industries.jpg' %}" alt="Emerging Industries">
+      <img src="{% static 'main/images/emerging_industries.jpg' %}" alt="Emerging Industries">
       <h3>Emerging Industries</h3>
       <p>Discover which new sectors are poised for growth and investment opportunities in Africa.</p>
       <a href="{% url 'emerging_industries' %}" class="btn">Learn More</a>
     </div>
   </div>
 </section>
-
 <!-- Scholarship in China Section -->
 <section class="scholarship-thumbnail-section">
   <!-- Section Header -->
   <header class="scholarship-header">
-    <h2>Scholarship Opportunities in China</h2>
-    <p>Explore full-time scholarship opportunities in China for African students in technology, business, and more.</p>
+<h2>Scholarship Opportunities</h2>
+    <p>
+      Discover comprehensive scholarship opportunities overseas – study in world-class institutions with full & partial financial support and join a vibrant international community.
+    </p>
   </header>
 
   <!-- Scholarship Card -->
   <div class="scholarship-card">
-    <img src="{% static 'images/scholarship.jpg' %}" alt="Scholarship Opportunities">
-    <h3>Scholarships for African Students</h3>
-    <p>Gain insight into full-time scholarships available in China for African students, particularly in AI, Business, and Technology fields.</p>
-    <a href="{% url 'scholarship' %}" class="btn">Learn More</a>
+    <img src="{% static 'main/images/china_scholarship.jpg' %}" alt="China Scholarship Thumbnail" class="scholarship-image">
+    <h3>China Scholarship Opportunities &#127464;&#127475;</h3>
+    <p>
+      Explore an array of scholarships covering undergraduate and graduate studies in China. These opportunities offer full & partial financial support and direct access to top universities.
+    </p>
+    <a href="scholarship.html" class="btn">Explore</a>
   </div>
 </section>
+<!-- Legal Information Section -->
+<section class="legal-information-section">
+  <!-- Section Header -->
+  <header>
+    <h2>Legal Information</h2>
+    <p>Find all legal documentation, policies, and regulatory guidelines you need to stay informed and compliant.</p>
+  </header>
+
+  <!-- Legal Sections -->
+  <div class="legal-details">
+    <article id="terms">
+      <h3>Terms of Use</h3>
+      <p>Our Terms of Use outline the rules and responsibilities for accessing and using BTAML Universe’s services. Please read them carefully to understand your rights and obligations.</p>
+      <a href="{% url 'terms' %}" class="btn">Read More</a>
+    </article>
+
+    <article id="privacy">
+      <h3>Privacy Policy</h3>
+      <p>Our Privacy Policy explains how BTAML Universe collects, uses, and protects your personal data. Please review it to understand our practices and your privacy rights.</p>
+      <a href="{% url 'privacy' %}" class="btn">Read More</a>
+    </article>
+
+    <article id="investment">
+      <h3>Investment Disclaimers</h3>
+      <p>Understand the risks and disclaimers associated with financial investments. This section explains that the provided information is for informational purposes only.</p>
+      <a href="{% url 'investment' %}" class="btn">Read More</a>
+    </article>
+
+    <article id="compliance">
+      <h3>Regulatory Compliance</h3>
+      <p>Stay updated with guidelines on anti-corruption, anti-money laundering, data protection, and ethical business practices.</p>
+      <a href="{% url 'compliance' %}" class="btn">Read More</a>
+    </article>
+
+    <article id="contact">
+      <h3>Contact Legal</h3>
+      <p>If you have questions regarding our legal policies or need further assistance, please contact our legal team.</p>
+      <a href="{% url 'contact_legal' %}" class="btn">Read More</a>
+    </article>
+  </div>
+</section>
+
 {% endblock %}

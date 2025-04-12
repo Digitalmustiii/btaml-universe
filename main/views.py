@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm  # For user registration form
+from django.contrib import messages  # For sending messages to the user
 
 def home(request):
     return render(request, 'main/home.html')
@@ -78,3 +80,14 @@ def compliance(request):
 
 def contact_legal(request):
     return render(request, 'main/contact_legal.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()  # This saves the user to the database
+            messages.success(request, 'Registration successful. You can now log in.')
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/register.html', {'form': form})

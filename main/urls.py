@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -32,4 +33,11 @@ urlpatterns = [
     path('legal/investment/', views.investment, name='investment'),
     path('legal/compliance/', views.compliance, name='compliance'),
     path('legal/contact/', views.contact_legal, name='contact_legal'),
+    
+    # Login and Logout using Django's built-in views:
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
+
+    # Registration view (custom):
+    path('register/', views.register, name='register'),
 ]

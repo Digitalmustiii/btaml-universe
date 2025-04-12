@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm  # For user registration form
 from django.contrib import messages  # For sending messages to the user
+
+
 
 def home(request):
     return render(request, 'main/home.html')

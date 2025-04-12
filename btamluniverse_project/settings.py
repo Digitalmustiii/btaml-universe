@@ -105,13 +105,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Production Security Settings (uncomment or adjust these if deploying in production)
 if not DEBUG:
     # Ensure all traffic is redirected to HTTPS.
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
     # Set HSTS headers.
     SECURE_HSTS_SECONDS = 31536000  # one year in seconds
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    SECURE_HSTS_PRELOAD = False
     # Cookie security
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
     # Additional secure settings
-    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_CONTENT_TYPE_NOSNIFF = False

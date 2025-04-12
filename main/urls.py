@@ -41,3 +41,4 @@ urlpatterns = [
     # Registration view (custom):
     path('register/', views.register, name='register'),
 ]
+ 

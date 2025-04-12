@@ -126,14 +126,21 @@ body {
   background-color: #e0e0e0;
   margin: 5px 0;
 }
-
 /* Dropdown arrow indicator */
 .has-dropdown::after {
-  content: " ▼";
-  font-size: 10px;
+  content: "v";
+  display: inline-block;
   margin-left: 5px;
   color: inherit;
   vertical-align: middle;
+  transform: rotate(180deg); /* Start with arrow pointing up */
+  transition: transform 0.3s ease; /* Smooth rotation animation */
+}
+
+/* When dropdown is active or parent li is hovered, rotate arrow to point down */
+li:hover > .has-dropdown::after,
+.dropdown-active > .has-dropdown::after {
+  transform: rotate(0deg);
 }
 
 /* Button Styles - Consistent sizing */

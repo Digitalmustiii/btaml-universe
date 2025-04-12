@@ -115,3 +115,5 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
     # Additional secure settings
     SECURE_CONTENT_TYPE_NOSNIFF = True
+
+

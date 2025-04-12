@@ -1,20 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Scholarship</title>
-  <link rel="stylesheet" href="{% static 'main/CSS/style/style.css' %}">
-</head>
-<body>
-  <header>
-    <h1>Scholarship</h1>
-  </header>
-  <main>
-    <p>This page will display scholarship posts or information. You can update this content via the admin interface or edit the HTML as needed.</p>
-  </main>
-  <footer>
-    <p>Scholarship footer content here.</p>
-  </footer>
-</body>
-</html>
+{% extends 'main/base.html' %}
+{% block content %}
+  <h1>Scholarship</h1>
+  <p>This page will display scholarship posts or information. You can update this content via the admin interface or edit the HTML as needed.</p>
+{% endblock %}

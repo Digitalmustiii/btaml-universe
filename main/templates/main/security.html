@@ -1,20 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Security Updates</title>
-  <link rel="stylesheet" href="{% static 'main/CSS/style/style.css' %}">
-</head>
-<body>
-  <header>
-    <h1>Security Updates</h1>
-  </header>
-  <main>
-    <p>Latest security-related updates and advisories will be displayed here.</p>
-  </main>
-  <footer>
-    <p>Security footer content here.</p>
-  </footer>
-</body>
-</html>
+{% extends 'main/base.html' %}
+{% block content %}
+  <h1>Security Updates</h1>
+  <p>Latest security-related updates and advisories will be displayed here.</p>
+{% endblock %}

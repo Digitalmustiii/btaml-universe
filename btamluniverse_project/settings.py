@@ -44,7 +44,7 @@ ROOT_URLCONF = 'btamluniverse_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # global templates directory
+        'DIRS': [BASE_DIR / 'main' / 'templates'],  # global templates directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,0 +1,174 @@
+/* Header Styles - Improved Responsiveness */
+.main-header {
+    background-color: #1D5C2E;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    border-radius: 50px;
+    height: 40px;
+    margin-right: 10px; /* More reliable than negative right positioning */
+  }
+  
+  .site-title a {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 1.4rem;
+    font-weight: 550;
+    font-family: sans-serif;
+  }
+  
+  /* Navigation Styles - With Mobile Menu Support */
+  .navbar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .navbar li {
+    position: relative;
+    margin: 0 5px; /* Consistent margins */
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 15px 10px;
+    display: block;
+    transition: color 0.3s;
+    font-size: 14px; /* Slightly larger for better readability */
+  }
+  
+  .navbar a:hover {
+    color:#8FD694;
+  }
+  
+  /* Dropdown Menu Styles - Fixed positioning */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 220px; /* Wider to accommodate longer text in your dropdowns */
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    display: none; /* Hidden by default */
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  
+  .navbar li:hover > .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .dropdown-menu li {
+    margin: 0;
+    width: 100%;
+  }
+  
+  .dropdown-menu a {
+    padding: 10px 20px;
+    font-weight: 400;
+    color: #444;
+    text-decoration: none;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Special styling for divider */
+  .dropdown-menu li.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 5px 0;
+  }
+  
+  /* Dropdown arrow indicator */
+  .has-dropdown::after {
+    content: "⌄";
+    display: inline-block;
+    margin-left: 5px;
+    color: inherit;
+    vertical-align: middle;
+    transform: rotate(180deg); /* Start with arrow pointing up */
+    transition: transform 0.3s ease; /* Smooth rotation animation */
+  }
+  
+  /* When dropdown is active or parent li is hovered, rotate arrow to point down */
+  li:hover > .has-dropdown::after,
+  .dropdown-active > .has-dropdown::after {
+    transform: rotate(0deg);
+  }
+  
+  /* Button Styles - Consistent sizing */
+  .login-btn, .register-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    margin: 0 5px;
+  }
+  
+  .login-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #8FD694;
+  }
+  
+  .login-btn:hover {
+    background-color: #8FD694;
+    color: black;
+  }
+  
+  .register-btn {
+    background-color: #8FD694;
+    color: black;
+  }
+  
+  .register-btn:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  /* Mobile Menu Toggle Button (Hidden by default) */
+  .mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+  }

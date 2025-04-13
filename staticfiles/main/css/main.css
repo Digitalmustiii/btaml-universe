@@ -1,0 +1,28 @@
+/* Main CSS File - Imports all modular CSS files */
+
+/* Import Reset and Base Styles */
+@import url('reset/reset.css');
+
+/* Import Header Styles */
+@import url('header/header.css');
+
+/* Import Footer Styles */
+@import url('footer/footer.css');
+
+/* Import Newsletter Styles */
+@import url('newsletter/newsletter.css');
+
+/* Import Widget Styles */
+@import url('widgets/widgets.css');
+
+/* Import Responsive Styles - Should be loaded last to override previous styles */
+@import url('responsive/responsive.css');
+
+@import url('africa/africa.css');
+
+@import url('business/business.css');
+
+@import url('legal/legal.css');
+
+@import url('scholarship/scholarship.css');
+

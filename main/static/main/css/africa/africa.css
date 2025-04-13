@@ -1,5 +1,3 @@
-/* Enhanced africa.css */
-
 /* Africa Section Wrapper */
 .africa-thumbnail-section {
   padding: 2rem 0;
@@ -41,10 +39,10 @@
   line-height: 1.5;
 }
 
-/* Container for the region cards */
+/* Container for the region cards (Desktop: horizontal scrolling) */
 .africa-cards {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* Maintain single row on desktop */
   justify-content: center;
   gap: 1rem;
   padding: 0.5rem;
@@ -70,7 +68,7 @@
   border-radius: 4px;
 }
 
-/* Individual Region Card */
+/* Individual Region Card (Desktop) */
 .region-card {
   flex: 0 0 220px;
   background: #fff;
@@ -153,39 +151,41 @@
 }
 
 /* Responsive Design */
+
+/* For screens less than 1200px (minor padding adjustment) */
 @media (max-width: 1200px) {
   .africa-cards {
     padding: 0.5rem 1.5rem;
   }
 }
 
-@media (max-width: 768px) {
-  .africa-thumbnail-section {
-    padding: 1.5rem 0;
-  }
-
-  .africa-thumbnail-section header h2 {
-    font-size: 1.8rem;
-  }
-
+/* Tablet: For screens between 600px and 992px */
+@media (max-width: 992px) and (min-width: 600px) {
   .africa-cards {
+    flex-wrap: wrap;  /* Enable wrapping */
+    justify-content: center; /* Center the wrapped rows */
     padding: 0.5rem 1rem;
+    overflow-x: visible; /* Remove horizontal scroll */
   }
-
   .region-card {
-    flex: 0 0 200px;
+    width: calc(50% - 1rem); /* Two cards per row with gap */
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile: For screens less than 600px */
+@media (max-width: 600px) {
+  .africa-cards {
+    flex-wrap: wrap;
+    justify-content: center; /* Center the card horizontally */
+    padding: 1rem;
+    overflow-x: visible;
+  }
+  .region-card {
+    width: 100%; /* Full width */
+  }
   .africa-thumbnail-section header h2 {
     font-size: 1.6rem;
   }
-
-  .region-card {
-    flex: 0 0 180px;
-  }
-
   .region-card h3 {
     font-size: 1rem;
   }

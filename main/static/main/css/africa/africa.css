@@ -1,9 +1,10 @@
 /* Africa Section Wrapper */
 .africa-thumbnail-section {
   padding: 2rem 0;
-  background: linear-gradient(to bottom, #f8f9fa, #e9f2eb);
+  background: linear-gradient(to bottom, #48d89c, #e9f2eb);
   position: relative;
   overflow: hidden;
+  background-color: black !important;
 }
 
 /* Decorative elements */

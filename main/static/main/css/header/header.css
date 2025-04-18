@@ -9,7 +9,7 @@
     flex-wrap: wrap;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; 
     width: 100%;
   }
   
@@ -30,7 +30,11 @@
     font-size: 1.4rem;
     font-weight: 550;
     font-family: sans-serif;
+    display: inline-block;
+    transform: translateY(-0.3em); /* <== this moves it up */
   }
+  
+
   
   /* Navigation Styles - With Mobile Menu Support */
   .navbar {
@@ -45,11 +49,13 @@
     justify-content: flex-end;
     align-items: center;
     flex-wrap: wrap;
+    
   }
   
   .navbar li {
     position: relative;
     margin: 0 5px; /* Consistent margins */
+    
   }
   
   .navbar a {
@@ -132,13 +138,13 @@
   /* Button Styles - Consistent sizing */
   .login-btn, .register-btn {
     border: none;
-    border-radius: 8px;
-    padding: 8px 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    margin: 0 5px;
+    border-radius: 8px !important;
+    padding: 8px 15px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-size: 14px !important;
+    margin: 0 5px !important;
   }
   
   .login-btn {
@@ -149,26 +155,166 @@
   
   .login-btn:hover {
     background-color: #8FD694;
-    color: black;
+    color: black !important;
   }
   
   .register-btn {
     background-color: #8FD694;
-    color: black;
+    color: black !important;
   }
   
   .register-btn:hover {
     background-color: black;
-    color: white;
+    color: white !important;
   }
   
   /* Mobile Menu Toggle Button (Hidden by default) */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Navbar default styles */
+.navbar {
+  display: flex;
+}
+
+/* Dropdown container styles */
+.navbar li {
+  position: relative;
+  list-style: none;
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  min-width: 200px;
+  z-index: 100;
+}
+
+/* Show dropdown when active */
+.navbar li.dropdown-active > .dropdown-menu {
+  display: block;
+}
+
+/* Mobile Styles */
+@media (max-width: 900px) {
+  /* Show mobile menu toggle button */
   .mobile-menu-toggle {
-    display: none;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 5px;
+    display: block;
   }
+  
+  /* Hide navbar by default on mobile */
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    flex-direction: column;
+  }
+  
+  /* Show navbar when active */
+  .navbar.active {
+    display: flex;
+  }
+  
+  /* Full width items on mobile */
+  .navbar li {
+    width: 100%;
+  }
+  
+  /* Mobile dropdown styling */
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+    padding-left: 1rem;
+    background-color: rgba(0,0,0,0.05); /* Slight background to distinguish dropdown items */
+  }
+  
+  /* Ensure all links are easily tappable on mobile */
+  .navbar li a {
+    display: block;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Specific fixes for Business and Investment dropdown */
+@media (max-width: 900px) {
+  /* Ensure the dropdown doesn't push other items in mobile view */
+  .navbar li .dropdown-menu {
+    position: static;
+    max-height: 0;
+    overflow: hidden;
+    transition: none; /* Remove any transitions that could cause glitches */
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  /* When active, show the dropdown without pushing content */
+  .navbar li.dropdown-active > .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  /* Style for links in the dropdown to ensure they're aligned properly */
+  .navbar li .dropdown-menu a {
+    padding-left: 2rem; /* Indent dropdown items */
+    border-bottom: none;
+  }
+  
+  /* Fix for the container to use proper layout */
+  .navbar {
+    width: 100%;
+    overflow-y: auto;
+    max-height: 80vh; /* Limit height to prevent overflow issues */
+  }
+}
+
+/* Fix for BTAML Universe header in mobile view */
+@media (max-width: 900px) {
+  /* Target the header specifically - adjust selector as needed based on your HTML structure */
+  .main-header .logo-container, 
+  .main-header .site-title, 
+  h1.btaml-universe-title {
+    margin-top: 15px;  /* Add space at the top */
+    margin-bottom: 15px;  /* Add space at the bottom */
+    position: relative;  /* Ensure proper positioning */
+    top: auto;  /* Remove any top positioning that might push it up */
+    transform: none;  /* Remove any transforms that might affect position */
+    display: block;  /* Ensure it's displayed as a block */
+    text-align: center;  /* Center alignment for mobile */
+  }
+  
+  /* If header is inside a flexbox container, adjust the container */
+  .main-header {
+    flex-direction: column;  /* Stack header elements vertically on mobile */
+    align-items: center;  /* Center items horizontally */
+    padding-top: 10px;  /* Add some padding at the top */
+  }
+  
+  /* Ensure mobile menu toggle doesn't interfere with header positioning */
+  .mobile-menu-toggle {
+    position: absolute;  /* Position the toggle button */
+    top: 15px;  /* Position from top */
+    right: 15px;  /* Position from right */
+    z-index: 100;  /* Ensure it's above other elements */
+  }
+  
+  /* Add space below header before the navigation */
+  .navbar.active {
+    margin-top: 10px;  /* Space between header and navigation */
+  }
+}

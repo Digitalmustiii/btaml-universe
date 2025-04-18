@@ -10,11 +10,11 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-default-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG should be False in production.
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 # ALLOWED_HOSTS - load from an environment variable as a comma-separated string.
 # In production, set this to your deployed domains (e.g., "your-app-name.vercel.app,www.yourdomain.com").
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1, localhost, btamluniverse.vercel.app').split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1, localhost, btamluniverse.vercel.app' ).split(',')
 
 # Application definition
 INSTALLED_APPS = [
@@ -44,7 +44,7 @@ ROOT_URLCONF = 'btamluniverse_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'main' / 'templates'],  # global templates directory
+        'DIRS': [ BASE_DIR / 'templates' 'main' ],  # global templates directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -52,6 +52,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -81,6 +82,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
@@ -115,3 +118,4 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = False
     # Additional secure settings
     SECURE_CONTENT_TYPE_NOSNIFF = False
+    

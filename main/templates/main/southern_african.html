@@ -1,5 +1,30 @@
 {% extends 'main/base.html' %}
+
 {% block content %}
-  <h1>South Africa</h1>
-  <p>Details about South Africa go here.</p>
+  <h2>Southern African News</h2>
+
+  {% for article in articles %}
+    <article class="news-item">
+      {% if article.thumbnail %}
+        <img src="{{ article.thumbnail.url }}" alt="{{ article.title }}" width="300">
+      {% endif %}
+      
+      <h3>{{ article.title }}</h3>
+      <p>{{ article.summary|default:article.content|truncatewords:30 }}</p>
+      
+      <a href="{% url 'news_detail' article.slug %}">Read More</a>
+    </article>
+  {% endfor %}
+
+  {% if articles.has_other_pages %}
+    <div class="pagination">
+      {% if articles.has_previous %}
+        <a href="?page={{ articles.previous_page_number }}">Previous</a>
+      {% endif %}
+      <span>Page {{ articles.number }} of {{ articles.paginator.num_pages }}</span>
+      {% if articles.has_next %}
+        <a href="?page={{ articles.next_page_number }}">Next</a>
+      {% endif %}
+    </div>
+  {% endif %}
 {% endblock %}

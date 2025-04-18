@@ -4,6 +4,7 @@
 {% block content %}
 <meta charset="UTF-8">
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/security/security.css' %}">
   <!-- TradingView Widget Section -->
   <section class="tradingview-widget-section">
     {% verbatim %}
@@ -12,7 +13,7 @@
       <div class="tradingview-widget-container__widget"></div>
       <div class="tradingview-widget-copyright">
         <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-          <span class="blue-text">Track all markets on TradingView</span>
+          
         </a>
       </div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
@@ -189,13 +190,33 @@
   <!-- Scholarship Card -->
   <div class="scholarship-card">
     <img src="{% static 'main/images/china_scholarship/china_scholarship.jpg' %}" alt="China Scholarship Thumbnail" class="scholarship-image">
-    <h3>China Scholarship Opportunities &#127464;&#127475;</h3>
     <p>
-      Explore an array of scholarships covering undergraduate and graduate studies in China. These opportunities offer full & partial financial support and direct access to top universities.
+      Explore an array of scholarships covering undergraduate and graduate studies across the World. These opportunities offer full & partial financial support and direct access to top universities.
     </p>
     <a href="{% url 'scholarship' %}" class="btn">Explore</a>
   </div>
 </section>
+
+<!-- Security Updates Section -->
+<section class="security-updates-section">
+  <!-- Section Header -->
+  <header class="security-header">
+    <h2>Security Updates</h2>
+    <p>
+      Stay informed with the latest security advisories, best practices, and critical updates to protect your investments and business operations across Africa.
+    </p>
+  </header>
+
+  <!-- Security Card -->
+  <div class="security-card">
+    <img src="{% static 'main/images/security/security_updates.jpg' %}" alt="Security Updates Thumbnail" class="security-image">
+    <p>
+      Access timely information on regional security developments, cybersecurity threats, and risk mitigation strategies tailored for businesses operating in African markets.
+    </p>
+    <a href="{% url 'security' %}" class="btn">Learn More</a>
+  </div>
+</section>
+
 <!-- Legal Information Section -->
 <section class="legal-information-section">
   <!-- Section Header -->

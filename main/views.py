@@ -1,8 +1,31 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm  # For user registration form
-from django.contrib import messages  # For sending messages to the user
+from django.core.paginator import Paginator
+from django.shortcuts import render
+from django.http import Http404
 
 
+# Mapping between region codes and template names
+REGION_TEMPLATES = {
+    'east': 'main/eastern_african.html',
+    'west': 'main/western_african.html',
+    'north': 'main/northern_african.html',
+    'south': 'main/southern_african.html',
+    'central': 'main/central_african.html',
+}
+
+def regional_news(request, region):
+    # Validate region; if not found, return 404
+    template_name = REGION_TEMPLATES.get(region)
+    if not template_name:
+        raise Http404("Region does not exist")
+
+    # Filter articles based on the provided region and published status, then paginate
+    articles_list = NewsArticle.objects.filter(region=region, published=True).order_by('-publish_date')
+    paginator = Paginator(articles_list, 10)  # Show 10 articles per page
+    page_number = request.GET.get('page')
+    articles = paginator.get_page(page_number)
+
+    # Render the appropriate template with the articles
+    return render(request, template_name, {'articles': articles})
 
 def home(request):
     return render(request, 'main/home.html')
@@ -10,35 +33,29 @@ def home(request):
 def africa(request):
     return render(request, 'main/africa.html')
 
-def eastern_african(request):
-    return render(request, 'main/eastern_african.html')
-
-def western_african(request):
-    return render(request, 'main/western_african.html')
-
-def northern_african(request):
-    return render(request, 'main/northern_african.html')
-
-def southern_african(request):
-    return render(request, 'main/southern_african.html')
-
-def central_african(request):
-    return render(request, 'main/central_african.html')
-
 def legal(request):
     return render(request, 'main/legal.html')
 
 def business(request):
     return render(request, 'main/business.html')
 
-def security(request):
-    return render(request, 'main/security.html')
+# Missing view stubs for legal section
+def terms(request):
+    return render(request, 'main/terms.html')
 
-def services(request):
-    return render(request, 'main/services.html')
+def privacy(request):
+    return render(request, 'main/privacy.html')
 
-def scholarship(request):
-    return render(request, 'main/scholarship.html')
+def investment(request):
+    return render(request, 'main/investment.html')
+
+def compliance(request):
+    return render(request, 'main/compliance.html')
+
+def contact_legal(request):
+    return render(request, 'main/contact_legal.html')
+
+# Add stubs for any remaining views referenced in your urls.py (e.g., agriculture, mining_energy, etc.)
 def agriculture(request):
     return render(request, 'main/agriculture.html')
 
@@ -68,28 +85,16 @@ def emerging_industries(request):
 
 def case_studies(request):
     return render(request, 'main/case_studies.html')
-def terms(request):
-    return render(request, 'main/terms.html')
 
-def privacy(request):
-    return render(request, 'main/privacy.html')
+def security(request):
+    return render(request, 'main/security.html')
 
-def investment(request):
-    return render(request, 'main/investment.html')
+def services(request):
+    return render(request, 'main/services.html')
 
-def compliance(request):
-    return render(request, 'main/compliance.html')
-
-def contact_legal(request):
-    return render(request, 'main/contact_legal.html')
+def scholarship(request):
+    return render(request, 'main/scholarship.html')
 
 def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()  # This saves the user to the database
-            messages.success(request, 'Registration successful. You can now log in.')
-            return redirect('login')
-    else:
-        form = UserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'main/register.html')
+

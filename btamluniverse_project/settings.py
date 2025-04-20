@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import dj_database_url
 import environ
-import django_heroku
 import dj_database_url
 from pathlib import Path
 import os
@@ -211,3 +210,8 @@ DEFAULT_FROM_EMAIL   = EMAIL_HOST_USER
 # Debugging to ensure your email credentials are loading correctly (optional)
 print("Email User:", EMAIL_HOST_USER)
 print("Email Password:", EMAIL_HOST_PASSWORD)
+
+# For production
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')

@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: btamluniverse
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn btamluniverse_project.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: btamluniverse_project.settings
+      - key: SECRET_KEY
+        value: "btamluniversebydigitalmustiii^3#xq8v$7!f@z%y!4m+&6e!pa1&z!n7^&g6ob8b8lq7p#d3@k@6"
+      - key: DEBUG
+        value: False

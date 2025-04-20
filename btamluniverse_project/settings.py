@@ -1,6 +1,12 @@
 import os
 from pathlib import Path
 import dj_database_url
+import environ
+import django_heroku
+import dj_database_url
+from pathlib import Path
+import os
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -14,7 +20,7 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # ALLOWED_HOSTS - load from an environment variable as a comma-separated string.
 # In production, set this to your deployed domains (e.g., "your-app-name.vercel.app,www.yourdomain.com").
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1, localhost, btamluniverse.vercel.app' ).split(',')
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'btamluniverse.onrender.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -24,19 +30,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main',
+    'main.apps.MainConfig',  # This line must be present
+    "django_ckeditor_5",  # this is for CKEditor 5
+
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # WhiteNoise middleware to serve static files efficiently in production
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'btamluniverse_project.urls'
@@ -44,7 +52,7 @@ ROOT_URLCONF = 'btamluniverse_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates' 'main' ],  # global templates directory
+        'DIRS': [ BASE_DIR / 'main/templates' ],  # global templates directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,6 +93,9 @@ AUTH_PASSWORD_VALIDATORS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# optional, but recommended for uploads
+CK_EDITOR_5_UPLOAD_PATH = "uploads/"
+
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -95,27 +106,108 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # URL to use when referring to static files located in STATIC_ROOT.
 STATIC_URL = '/static/'
+
 # Location of your project's static files for collecting via collectstatic.
-STATICFILES_DIRS = [BASE_DIR / 'main' / 'static']
+# Add any other directories you want Django to search for static files.
+STATICFILES_DIRS = [
+     BASE_DIR / 'static',
+ ]
+
 # Directory where static files will be collected.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-# Use the default storage instead
+
+# Use the default storage for static files with WhiteNoise.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Static file finders that Django uses to locate static files in your directories and apps.
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Production Security Settings (uncomment or adjust these if deploying in production)
-if not DEBUG:
-    # Ensure all traffic is redirected to HTTPS.
-    SECURE_SSL_REDIRECT = False
-    # Set HSTS headers.
-    SECURE_HSTS_SECONDS = 31536000  # one year in seconds
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-    SECURE_HSTS_PRELOAD = False
-    # Cookie security
-    SESSION_COOKIE_SECURE = False
-    CSRF_COOKIE_SECURE = False
-    # Additional secure settings
-    SECURE_CONTENT_TYPE_NOSNIFF = False
-    
+# CKEditor 5 configuration
+# settings.py
+
+# settings.py
+
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'bold', 'italic', 'underline', 'strikethrough', '|',
+            'fontFamily', 'fontSize', '|',
+            'fontColor', 'fontBackgroundColor', '|',
+            'link', '|',
+            'imageUpload', 'mediaEmbed', '|',
+            'undo', 'redo'
+        ],
+        'fontFamily': {
+            'options': [
+                'default',
+                'Arial, Helvetica, sans-serif',
+                'Courier New, Courier, monospace',
+                'Georgia, serif',
+                'Tahoma, Geneva, sans-serif',
+                'Trebuchet MS, Helvetica, sans-serif',
+                'Verdana, Geneva, sans-serif'
+            ]
+        },
+        'fontSize': {
+            'options': [10, 12, 14, 'default', 18, 20, 24, 28, 32]
+        },
+        'fontColor': {
+            'columns': 5,
+            'colors': [
+                { 'color': 'hsl(0, 0%, 0%)',    'label': 'Black' },
+                { 'color': 'hsl(0, 75%, 60%)',  'label': 'Red' },
+                { 'color': 'hsl(30, 75%, 60%)', 'label': 'Orange' },
+                { 'color': 'hsl(60, 75%, 60%)', 'label': 'Yellow' },
+                { 'color': 'hsl(120, 75%, 60%)','label': 'Green' },
+                
+            ]
+        },
+        'fontBackgroundColor': {
+            'columns': 5,
+            'colors': [
+                { 'color': 'hsl(0, 0%, 100%)',  'label': 'White',  'hasBorder': True },
+                { 'color': 'hsl(0, 0%, 90%)',   'label': 'Light Grey' },
+                { 'color': 'hsl(0, 0%, 60%)',   'label': 'Grey' },
+                { 'color': 'hsl(0, 75%, 60%)',  'label': 'Red' },
+                { 'color': 'hsl(120, 75%, 60%)','label': 'Green' },
+                
+            ]
+        },
+        'mediaEmbed': {
+            'previewsInData': True
+        },
+        'height': 400,
+        'width': '100%',
+    }
+}
+
+CKEDITOR_5_UPLOAD_PATH = "uploads/"
+
+#for newsletter
+# settings.py
+# BASE_DIR = outer project directory (where your .env lives)
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Initialize
+env = environ.Env()
+env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
+
+# Email settings
+EMAIL_BACKEND        = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST           = "smtp.gmail.com"
+EMAIL_PORT           = 587
+EMAIL_USE_TLS        = True
+EMAIL_HOST_USER      = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD  = env("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL   = EMAIL_HOST_USER
+
+# Debugging to ensure your email credentials are loading correctly (optional)
+print("Email User:", EMAIL_HOST_USER)
+print("Email Password:", EMAIL_HOST_PASSWORD)

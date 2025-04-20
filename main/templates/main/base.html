@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BTAML Universe</title>
  
-  <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}?v={{ timestamp }}">
      <!-- Link the Africa-specific CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -14,7 +14,7 @@
   <!-- Header Section -->
   <header class="main-header">
     <div class="logo-container">
-      <img src="{% static 'main/images/universe/Universe.png' %}" alt="BTAML Universe Logo" class="logo">
+      <img src="{% static 'images/universe/Universe.png' %}" alt="BTAML Universe Logo" class="logo">
       <h1 class="site-title">
         <a href="{% url 'home' %}" style="color: #ffffff; text-decoration: none;">BTAML Universe</a>
       </h1>
@@ -41,7 +41,6 @@
   <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
   <li><a href="{% url 'investment' %}">Investment Disclaimers</a></li>
   <li><a href="{% url 'compliance' %}">Regulatory Compliance</a></li>
-  <li><a href="{% url 'contact_legal' %}">Contact Legal</a></li>
 </ul>
     </li>
     <li>
@@ -74,9 +73,22 @@
       <!-- Services -->
     <a href="{% url 'services' %}">Our Services</a>
     </li>
-    <!-- Login and Register as Buttons -->
-    <li><a href="{% url 'login' %}" class="login-btn">Login</a></li>
-    <li><a href="{% url 'register' %}" class="register-btn">Register</a></li>
+
+  <!-- search form as a nav item -->
+<li class="nav-search">
+  <form action="{% url 'search_results' %}" method="get" class="search-form">
+    <label for="nav-search-input" class="visually-hidden">Search site</label>
+    <input
+      type="search"
+      id="nav-search-input"
+      name="q"
+      class="search-input"
+      placeholder="Search…"
+      aria-label="Search"
+    />
+    <button type="submit" class="search-button"></button>
+  </form>
+</li>
   </ul>
 </nav>
   </header>
@@ -103,13 +115,22 @@
       <div class="footer-follow">
         <h3>Follow Us</h3>
         <div class="social-icons">
-          <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100090887146887" title="Facebook" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
           <a href="#" title="X (formerly Twitter)"><i class="fab fa-x"></i></a>
           <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.instagram.com/btaml_universe_official?igsh=MmY5M3pvdnM1MW02" title="Instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
           <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
           <a href="mailto:consultbtaml@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://wa.me/8615810743803" title="WhatsApp" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://i.imgur.com/yqHuCL0.png" target="_blank" title="WeChat">
+            <i class="fab fa-weixin"></i>
+          </a>          
         </div>
       </div>
     </div>
@@ -121,13 +142,14 @@
     <p>
       Have questions or need help? Use the form to reach out and we will be in touch with you as quickly as possible.
     </p>
-    <form action="#" method="post" class="newsletter-form">
+    <form action="{% url 'newsletter_subscribe' %}" method="post" class="newsletter-form">
+      {% csrf_token %}
       <input type="email" name="email" placeholder="Email*" required>
       <button type="submit">Subscribe</button>
     </form>
   </div>
   <div class="newsletter-logo">
-    <img src="{% static 'main/images/universe/Universe.png' %}" alt="BTAML Universe Logo">
+    <img src="{% static 'images/universe/Universe.png' %}" alt="BTAML Universe Logo">
   </div>
 </div>
 
@@ -136,12 +158,16 @@
       <div class="footer-services">
         <h3>Our Services</h3>
         <ul>
-          <li>SWOT Analysis, MOST Analysis, PESTLE Analysis.</li>
-          <li>Brainstorming, Mind Mapping, Process Design.</li>
-          <li>Field Research and Survey.</li>
-          <li>Voice Recording (African Languages).</li>
+          <li>Strategic Business Analysis SWOT, MOST, PESTLE</li>
+          <li>Creative & Operational Thinking Brainstorming, Mind Mapping, Process Design</li>
+          <li>Research & Data Collection Field Surveys, Voice Recording, Opinion Polls</li>
+          <li>Regional Intelligence & Monitoring Africa‑wide News, Sector Trends, Case Studies</li>
+          <li>Scholarships & Opportunities Fully‑funded Awards, Fellowships, Internships</li>
+          <li>Security & Intelligence Updates Conflict Alerts, Travel Advisories, Cyber Risks</li>
+          <li>Custom Consulting Reports, White Papers, Strategy Sessions</li>
         </ul>
       </div>
+      
       <div class="footer-contact">
         <h3>Contact Us</h3>
         <ul>

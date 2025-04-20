@@ -1,0 +1,303 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<style>
+  /* Main Container */
+  .scholarship-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  /* Article Container */
+  .scholarship-article {
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    overflow: hidden;
+    padding: 2.5rem;
+  }
+  
+  /* Article Header */
+  .article-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1.5rem;
+  }
+  
+  .article-header::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background-color: #4CAF50;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .article-title {
+    color: #1D5C2E;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .publish-date {
+    color: #6c757d;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Featured Image */
+  .featured-image-container {
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .featured-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  .featured-image:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Article Body - CKEditor Content */
+  .scholarship-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    text-align: justify;
+    margin-bottom: 3rem;
+  }
+  
+  /* CKEditor styling enhancements */
+  .scholarship-body h1, 
+  .scholarship-body h2, 
+  .scholarship-body h3, 
+  .scholarship-body h4, 
+  .scholarship-body h5, 
+  .scholarship-body h6 {
+    color: #1D5C2E;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .scholarship-body p {
+    margin-bottom: 1.2rem;
+  }
+  
+  .scholarship-body a {
+    color: #2A8C40;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+  
+  .scholarship-body a:hover {
+    color: #1D5C2E;
+  }
+  
+  .scholarship-body ul, 
+  .scholarship-body ol {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .scholarship-body blockquote {
+    border-left: 4px solid #4CAF50;
+    padding-left: 1rem;
+    margin-left: 0;
+    font-style: italic;
+    color: #555;
+  }
+  
+  .scholarship-body figure {
+    text-align: center;
+    margin: 2rem auto;
+  }
+  
+  .scholarship-body figure img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .scholarship-body figure figcaption {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  
+  .scholarship-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  
+  .scholarship-body table th {
+    background-color: #f1f8e9;
+    color: #1D5C2E;
+    font-weight: 600;
+  }
+  
+  .scholarship-body table th,
+  .scholarship-body table td {
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+  }
+  
+  .scholarship-body table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Related Scholarships Section */
+  .related-section {
+    margin-top: 4rem;
+    position: relative;
+    padding-top: 2rem;
+  }
+  
+  .related-heading {
+    color: #1D5C2E;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .related-heading::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    background-color: #4CAF50;
+    bottom: 0;
+    left: 20%;
+  }
+  
+  .related-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e8e8e8;
+    height: 100%;
+  }
+  
+  .related-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    border-color: #2A8C40;
+  }
+  
+  .related-image {
+    height: 160px;
+    object-fit: cover;
+    width: 100%;
+    transition: transform 0.4s ease;
+  }
+  
+  .related-card:hover .related-image {
+    transform: scale(1.08);
+  }
+  
+  .related-title {
+    color: #1D5C2E;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .scholarship-article {
+      padding: 2rem 1.5rem;
+    }
+    
+    .article-title {
+      font-size: 2.2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .scholarship-article {
+      padding: 1.5rem 1rem;
+    }
+    
+    .article-title {
+      font-size: 1.8rem;
+    }
+    
+    .featured-image {
+      max-height: 350px;
+    }
+    
+    .scholarship-body {
+      font-size: 1rem;
+    }
+    
+    .related-image {
+      height: 140px;
+    }
+  }
+</style>
+
+<div class="container scholarship-container py-5">
+  <article class="scholarship-article">
+    <header class="article-header">
+      <h1 class="article-title">{{ scholarship.title }}</h1>
+      <p class="publish-date">{{ scholarship.published_date|date:"F j, Y" }}</p>
+    </header>
+
+    {% if scholarship.thumbnail %}
+      <div class="featured-image-container">
+        <img src="{{ scholarship.thumbnail.url }}" class="featured-image" alt="{{ scholarship.title }}">
+      </div>
+    {% endif %}
+
+    <div class="scholarship-body">
+      {{ scholarship.body|safe }}
+    </div>
+
+    {% if related_scholarships %}
+      <section class="related-section">
+        <h3 class="related-heading">Related Posts</h3>
+        <div class="row">
+          {% for rel in related_scholarships %}
+            <div class="col-md-4 mb-4">
+              <a href="{% url 'scholarship_detail' rel.pk %}" class="text-decoration-none">
+                <div class="related-card">
+                  {% if rel.thumbnail %}
+                    <img src="{{ rel.thumbnail.url }}" class="related-image" alt="{{ rel.title }}">
+                  {% endif %}
+                  <div class="card-body text-center">
+                    <h5 class="related-title">{{ rel.title }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  </article>
+</div>
+{% endblock %}

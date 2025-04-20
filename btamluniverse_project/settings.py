@@ -199,7 +199,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Initialize
 env = environ.Env()
-env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
+# Only read the .env file if it exists (i.e., in local dev)
+env_file = os.path.join(BASE_DIR, '.env')
+if os.path.isfile(env_file):
+    env.read_env(env_file)
 
 # Email settings
 EMAIL_BACKEND        = "django.core.mail.backends.smtp.EmailBackend"
@@ -211,8 +214,8 @@ EMAIL_HOST_PASSWORD  = env("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL   = EMAIL_HOST_USER
 
 # Debugging to ensure your email credentials are loading correctly (optional)
-print("Email User:", EMAIL_HOST_USER)
-print("Email Password:", EMAIL_HOST_PASSWORD)
+#print("Email User:", EMAIL_HOST_USER)
+#print("Email Password:", EMAIL_HOST_PASSWORD)
 
 # For production
 if not DEBUG:

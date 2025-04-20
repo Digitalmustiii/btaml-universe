@@ -1,1 +1,1 @@
-web: gunicorn btamluniverse_project.wsgi --log-file -
+web: python wsgi.py

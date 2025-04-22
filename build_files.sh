@@ -1,6 +1,12 @@
-#!/bin/bash
-echo "Building static files"
-python manage.py collectstatic --noinput
+#!/usr/bin/env bash
+set -e
 
-# Make this file executable
-chmod +x build_files.sh
+# install Python deps so collectstatic can run
+pip install -r requirements.txt
+
+# collect static into your distDir
+python btamluniverse_project/manage.py collectstatic --noinput
+
+# move the generated static into staticfiles_build/
+# (adjust this if collectstatic writes elsewhere)
+mv btamluniverse_project/static/ staticfiles_build

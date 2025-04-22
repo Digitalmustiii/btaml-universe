@@ -8,17 +8,17 @@
         "runtime": "python3.11",
         "maxLambdaSize": "15mb"
       }
-    },
-    {
-      "src": "build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles"
-      }
     }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "/staticfiles/$1" },
-    { "src": "/(.*)", "dest": "btamluniverse_project/wsgi.py" }
+    {
+      "src": "/static/(.*)",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" },
+      "dest": "btamluniverse_project/wsgi.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "btamluniverse_project/wsgi.py"
+    }
   ]
 }

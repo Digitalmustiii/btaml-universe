@@ -8,6 +8,10 @@ application = get_wsgi_application()
 # Add WhiteNoise for static file serving
 from whitenoise import WhiteNoise
 application = WhiteNoise(application)
-application.add_files(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'staticfiles'), prefix='static/')
+static_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'staticfiles')
+if not os.path.exists(static_path):
+    os.makedirs(static_path, exist_ok=True)
+application.add_files(static_path, prefix='static/')
 
-app = application  # For Vercel
+# For Vercel
+app = application

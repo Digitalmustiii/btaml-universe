@@ -23,7 +23,7 @@ DEBUG        = env('DEBUG')
 ALLOWED_HOSTS = [
     'btamluniverse.pythonanywhere.com',
     'btamluniverse.vercel.app',
-    'btamluniverse-adw6dgx9c-mustapha-s-projects-72030092.vercel.app'
+    'btamluniverse-gqtqmjqz6-mustapha-s-projects-72030092.vercel.app'
     'btamluniverse-git-main-mustapha-s-projects-72030092.vercel.app'
 
 ]

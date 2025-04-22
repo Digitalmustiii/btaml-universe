@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 import environ
-
 import environ
 import dj_database_url
 
@@ -103,10 +102,13 @@ USE_L10N      = True
 USE_TZ        = True
 
 # ── STATIC & MEDIA ─────────────────────────────────────────────────────────────
+# Replace your current STATIC settings with these
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # This should be a list
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Change the WhiteNoise storage class
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 
 MEDIA_URL = '/media/'

@@ -6,14 +6,19 @@
       "use": "@vercel/python",
       "config": {
         "runtime": "python3.11",
-        "installCommand": "pip install -r requirements.txt",
-        "buildCommand": "python manage.py collectstatic --noinput",
         "maxLambdaSize": "15mb"
+      }
+    },
+    {
+      "src": "build.bat",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles"
       }
     }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/(.*)",        "dest": "btamluniverse_project/wsgi.py" }
+    { "src": "/static/(.*)", "dest": "/staticfiles/$1" },
+    { "src": "/(.*)", "dest": "btamluniverse_project/wsgi.py" }
   ]
 }

@@ -8,7 +8,7 @@
     }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/main/(.*)", "dest": "/public/$1" },
     { "src": "/(.*)",        "dest": "btamluniverse_project/wsgi.py" }
   ]
 }

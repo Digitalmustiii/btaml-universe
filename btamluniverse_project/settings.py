@@ -23,6 +23,8 @@ DEBUG        = env('DEBUG')
 ALLOWED_HOSTS = [
     'btamluniverse.pythonanywhere.com',
     'btamluniverse.vercel.app',
+    'btamluniverse-adw6dgx9c-mustapha-s-projects-72030092.vercel.app'
+    'btamluniverse-git-main-mustapha-s-projects-72030092.vercel.app'
 
 ]
 
@@ -94,11 +96,10 @@ USE_L10N      = True
 USE_TZ        = True
 
 # ── STATIC & MEDIA ─────────────────────────────────────────────────────────────
-STATIC_URL    = '/static/'
-STATIC_ROOT   = BASE_DIR / 'public' / 'static'
-STATICFILES_DIRS = [ BASE_DIR / 'static' ]
+STATIC_URL    = 'static'
+STATIC_ROOT   = BASE_DIR / 'public'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ── CKEDITOR 5 ─────────────────────────────────────────────────────────────────

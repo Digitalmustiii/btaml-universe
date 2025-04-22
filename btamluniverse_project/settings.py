@@ -96,7 +96,7 @@ USE_L10N      = True
 USE_TZ        = True
 
 # ── STATIC & MEDIA ─────────────────────────────────────────────────────────────
-STATIC_URL    = 'static'
+STATIC_URL    = 'allchange'
 STATIC_ROOT   = BASE_DIR / 'public'
 
 MEDIA_URL = '/uploads/'

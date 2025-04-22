@@ -19,6 +19,7 @@
         <a href="{% url 'home' %}" style="color: #ffffff; text-decoration: none;">BTAML Universe</a>
       </h1>
     </div>
+    
   <nav class="navbar">
   <ul>
     <li>
@@ -75,20 +76,21 @@
     </li>
 
   <!-- search form as a nav item -->
-<li class="nav-search">
-  <form action="{% url 'search_results' %}" method="get" class="search-form">
-    <label for="nav-search-input" class="visually-hidden">Search site</label>
-    <input
-      type="search"
-      id="nav-search-input"
-      name="q"
-      class="search-input"
-      placeholder="Search…"
-      aria-label="Search"
-    />
-    <button type="submit" class="search-button"></button>
-  </form>
-</li>
+  <li class="nav-search">
+    <form action="{% url 'search_results' %}" method="get" class="search-form">
+      <label for="nav-search-input" class="visually-hidden">Search site</label>
+      <input
+        type="search"
+        id="nav-search-input"
+        name="q"
+        class="search-input"
+        placeholder="Search…"
+        aria-label="Search"
+        autocomplete="off"
+      />
+      <button type="submit" class="search-button"></button>
+    </form>
+  </li>
   </ul>
 </nav>
   </header>
@@ -186,10 +188,47 @@
   </footer>
   {% endblock %}
 
-  <script src="{% static 'main/js/main.js' %}"></script>
-<script src="{% static 'main/js/mobile-menu.js' %}"></script>
-<script src="{% static 'main/js/dropdown-handler.js' %}"></script>
-<script src="{% static 'main/js/responsive-layout.js' %}"></script>
-
+  <script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/mobile-menu.js' %}"></script>
+<script src="{% static 'js/dropdown-handler.js' %}"></script>
+<script src="{% static 'js/responsive-layout.js' %}"></script>
+<!-- Add this script at the end of your HTML file, just before the closing </body> tag -->
+<script>
+  // Fix for mobile search bar issues
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('nav-search-input');
+    
+    if (searchInput) {
+      // Prevent the default focus behavior that might be causing the glitch
+      searchInput.addEventListener('touchstart', function(e) {
+        // This prevents the default touch behavior which might be causing issues
+        if (window.innerWidth <= 900) {
+          e.preventDefault();
+          this.focus();
+        }
+      });
+      
+      // Prevent any potential form submission on touch devices
+      const searchForm = searchInput.closest('form');
+      if (searchForm) {
+        searchForm.addEventListener('touchend', function(e) {
+          // Allow the form to be submitted only if the search input has focus
+          if (document.activeElement !== searchInput && searchInput.value.trim() === '') {
+            e.preventDefault();
+          }
+        });
+      }
+      
+      // Add a specific class when focused to apply additional styles
+      searchInput.addEventListener('focus', function() {
+        this.classList.add('is-focused');
+      });
+      
+      searchInput.addEventListener('blur', function() {
+        this.classList.remove('is-focused');
+      });
+    }
+  });
+</script>
 </body>
 </html>

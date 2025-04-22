@@ -13,8 +13,12 @@ const DropdownHandler = {
             
       // Only add event handlers to items with dropdowns
       if (dropdownLink && dropdownMenu) {
-        // For mobile view, prevent the link from navigating and toggle dropdown instead
-        dropdownLink.addEventListener('click', (e) => {
+        // Remove any existing click event listeners first
+        const newDropdownLink = dropdownLink.cloneNode(true);
+        dropdownLink.parentNode.replaceChild(newDropdownLink, dropdownLink);
+        
+        // Add click event for all viewports (mobile and desktop)
+        newDropdownLink.addEventListener('click', (e) => {
           if (window.innerWidth <= 900) {
             e.preventDefault();
             e.stopPropagation(); // Prevent event bubbling
@@ -74,45 +78,54 @@ const DropdownHandler = {
 document.addEventListener('DOMContentLoaded', function() {
   MobileMenu.init();
   DropdownHandler.init();
-});
-
-// Specific fix for Business and Investment dropdown
-document.addEventListener('DOMContentLoaded', function() {
-  // Get the Business and Investment dropdown
-  const businessDropdown = document.querySelector('.navbar li a[href*="business"], .navbar li a:contains("Business and Investment")').closest('li');
+  
+  // Specific fix for Business and Investment dropdown
+  // Use a more reliable selector that works in vanilla JS
+  const businessLinks = document.querySelectorAll('.navbar li a[href*="business"]');
+  let businessDropdown = null;
+  
+  // Find the Business and Investment link
+  for (const link of businessLinks) {
+    if (link.textContent.includes('Business') || link.textContent.includes('Investment')) {
+      businessDropdown = link.closest('li');
+      break;
+    }
+  }
   
   if (businessDropdown) {
     const dropdownLink = businessDropdown.querySelector('a.has-dropdown');
     const dropdownMenu = businessDropdown.querySelector('.dropdown-menu');
     
-    // Clear any existing event listeners (this is a trick to ensure we don't have duplicate handlers)
-    const newDropdownLink = dropdownLink.cloneNode(true);
-    dropdownLink.parentNode.replaceChild(newDropdownLink, dropdownLink);
-    
-    // Add specific handler for this dropdown
-    newDropdownLink.addEventListener('click', function(e) {
-      if (window.innerWidth <= 900) {
-        e.preventDefault();
-        e.stopPropagation(); // Prevent event bubbling
-        
-        // First close all dropdowns to avoid conflicts
-        document.querySelectorAll('.navbar li.dropdown-active').forEach(item => {
-          if (item !== businessDropdown) {
-            item.classList.remove('dropdown-active');
+    if (dropdownLink && dropdownMenu) {
+      // Clear any existing event listeners
+      const newDropdownLink = dropdownLink.cloneNode(true);
+      dropdownLink.parentNode.replaceChild(newDropdownLink, dropdownLink);
+      
+      // Add specific handler for this dropdown
+      newDropdownLink.addEventListener('click', function(e) {
+        if (window.innerWidth <= 900) {
+          e.preventDefault();
+          e.stopPropagation(); // Prevent event bubbling
+          
+          // First close all dropdowns to avoid conflicts
+          document.querySelectorAll('.navbar li.dropdown-active').forEach(item => {
+            if (item !== businessDropdown) {
+              item.classList.remove('dropdown-active');
+            }
+          });
+          
+          // Toggle this dropdown specifically
+          businessDropdown.classList.toggle('dropdown-active');
+          
+          // Add specific positioning for this dropdown to prevent layout shifts
+          if (businessDropdown.classList.contains('dropdown-active')) {
+            dropdownMenu.style.position = 'static';
+            dropdownMenu.style.width = '100%';
+            dropdownMenu.style.overflowY = 'auto';
+            dropdownMenu.style.maxHeight = '300px'; // Limit height to prevent pushing content too far
           }
-        });
-        
-        // Toggle this dropdown specifically
-        businessDropdown.classList.toggle('dropdown-active');
-        
-        // Add specific positioning for this dropdown to prevent layout shifts
-        if (businessDropdown.classList.contains('dropdown-active')) {
-          dropdownMenu.style.position = 'static';
-          dropdownMenu.style.width = '100%';
-          dropdownMenu.style.overflowY = 'auto';
-          dropdownMenu.style.maxHeight = '300px'; // Limit height to prevent pushing content too far
         }
-      }
-    });
+      });
+    }
   }
 });

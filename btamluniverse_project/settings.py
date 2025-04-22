@@ -20,11 +20,10 @@ env.read_env(os.path.join(BASE_DIR, '.env'))
 # ── SECURITY ───────────────────────────────────────────────────────────────────
 SECRET_KEY   = env('DJANGO_SECRET_KEY', default='your-default-secret-key')
 DEBUG        = env('DEBUG')
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['127.0.0.1', 'localhost'])
-
-# If you deploy on Railway, for example:
-if env('RAILWAY_URL', default=None):
-    ALLOWED_HOSTS.append(env('RAILWAY_URL'))
+ALLOWED_HOSTS = [
+    'btamluniverse.pythonanywhere.com',
+    'btamluniverse.vercel.app',
+]
 
 # ── APPLICATION DEFINITION ────────────────────────────────────────────────────
 INSTALLED_APPS = [
@@ -70,12 +69,25 @@ TEMPLATES = [
 ]
 
 # ── DATABASE ───────────────────────────────────────────────────────────────────
-DATABASES = {
-    'default': dj_database_url.config(
-        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}'
-    )
-}
+DATABASE_URL = os.getenv('DATABASE_URL', '').strip()
 
+if DATABASE_URL:
+    # Production / Preview environment (on Vercel, Railway, etc.)
+    DATABASES = {
+        'default': dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True
+        )
+    }
+else:
+    # Local development fallback
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 # ── PASSWORD VALIDATION ────────────────────────────────────────────────────────
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -97,16 +109,85 @@ STATICFILES_DIRS     = [BASE_DIR / 'static']
 STATIC_ROOT          = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE  = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL            = '/media/'
-MEDIA_ROOT           = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ── CKEDITOR 5 ─────────────────────────────────────────────────────────────────
+# ── CKEDITOR 5 ─────────────────────────────────────────────────────────────────
 CKEDITOR_5_UPLOAD_PATH = "uploads/"
-CKEDITOR_5_CONFIGS     = {
+
+CKEDITOR_5_CONFIGS = {
     'default': {
-        # your toolbar, font configs, etc…
+        'toolbar': {
+            'items': [
+                'heading', '|',
+                'bold', 'italic', 'underline', '|',
+                'uploadFile',    # ← Generic file upload button
+                'imageUpload',   # ← Image upload
+                'link',          # ← Hyperlinks
+                'bulletedList', 'numberedList', '|',
+                'insertTable',   # ← Tables
+                'mediaEmbed',    # ← Video embed
+                'fontFamily', 'fontSize', '|',
+                'fontColor', '|',
+                'undo', 'redo'
+            ],
+            'shouldNotGroupWhenFull': False,
+        },
+
+        # Simple Upload Adapter config
+        # this URL must point to your Django view that saves the file and returns JSON { "url": "<file-url>" }
+        'simpleUpload': {
+            'uploadUrl': '/ckeditor/upload/',
+            'headers': {
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        },
+
+        # Table plugin
+        'table': {
+            'contentToolbar': [
+                'tableColumn', 'tableRow', 'mergeTableCells'
+            ]
+        },
+
+        # Headings
+        'heading': {
+            'options': [
+                {'model': 'paragraph', 'title': 'Paragraph'},
+                {'model': 'heading1',  'view': 'h1', 'title': 'Heading 1'},
+                {'model': 'heading2',  'view': 'h2', 'title': 'Heading 2'},
+            ]
+        },
+
+        # Font & color
+        'fontFamily': {
+            'options': [
+                'default','Arial, Helvetica, sans-serif','Georgia, serif',
+                'Tahoma, Geneva, sans-serif','Courier New, Courier, monospace'
+            ]
+        },
+        'fontSize': {'options': [10,12,14,'default',18,24,32]},
+        'fontColor': {
+            'columns': 3,
+            'colors': [
+                {'color':'hsl(0,0%,0%)','label':'Black'},
+                {'color':'hsl(0,75%,60%)','label':'Red'},
+                {'color':'hsl(204,76%,53%)','label':'Blue'},
+                {'color':'hsl(120,75%,60%)','label':'Green'},
+            ]
+        },
+
+        # Media embed & image
+        'mediaEmbed': {'previewsInData': True},
+        'image': {'toolbar': ['imageTextAlternative','imageStyle:full']},
+
+        'height': 300, 'width': '100%',
     }
 }
+
+
+
 
 # ── EMAIL (via .env) ───────────────────────────────────────────────────────────
 EMAIL_BACKEND      = "django.core.mail.backends.smtp.EmailBackend"

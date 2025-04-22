@@ -320,6 +320,7 @@
 }
 
 /* Modern search form styling */
+/* Modern search form styling */
 .search-form {
   display: flex;
   position: relative;
@@ -335,6 +336,8 @@
   font-size: 0.9rem;
   transition: all 0.2s ease;
   color: #333;
+  -webkit-appearance: none; /* Fixes iOS styling issues */
+  appearance: none;
 }
 
 .search-input:focus {
@@ -358,6 +361,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  /* Make hit area bigger on mobile */
+  min-width: 44px;
+  min-height: 44px;
+  right: -5px;
+  z-index: 2;
 }
 
 .search-button::after {
@@ -377,8 +385,8 @@
   height: 7px;
   background-color: #1D5C2E;
   transform: rotate(45deg);
-  bottom: 0;
-  right: 0;
+  bottom: 6px;
+  right: 14px;
 }
 
 .search-button:hover::after {
@@ -400,4 +408,50 @@
   overflow: hidden;
   white-space: nowrap;
   border: 0;
+}
+
+/* Mobile-specific enhancements */
+@media (max-width: 900px) {
+  .nav-search {
+    width: 100%;
+    margin: 8px 0;
+    padding: 0 15px;
+  }
+
+  .search-form {
+    width: 100%;
+  }
+
+  .search-input {
+    height: 40px; /* Slightly larger target on mobile */
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+}
+/* Additional CSS to help fix search focus issues */
+.search-input.is-focused {
+  /* Stronger visual indication when focused */
+  border-color: #1D5C2E;
+  background-color: #fff;
+  box-shadow: 0 0 0 2px rgba(29, 92, 46, 0.3);
+}
+
+/* Prevent zoom behaviors on iOS */
+@media (max-width: 900px) {
+  .search-input {
+    font-size: 16px; /* Prevents iOS zoom */
+    -webkit-user-select: auto; /* Allows selection on iOS */
+    user-select: auto;
+    transform: translateZ(0); /* Force hardware acceleration */
+  }
+  
+  /* Fix for iOS touch events */
+  .search-form {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* Remove tap highlight */
+  }
+  
+  /* Fix for focus states on mobile */
+  .search-input:focus {
+    position: relative; /* Creates stacking context */
+    z-index: 5; /* Ensure it's above other elements */
+  }
 }

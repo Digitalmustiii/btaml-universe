@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import environ
 
 import environ
 import dj_database_url
@@ -9,12 +10,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ── ENVIRONMENT VARIABLES ─────────────────────────────────────────────────────
 # 1) Define the env, including any casting and defaults:
+
+# 1) Initialize environment variables with casting and defaults
 env = environ.Env(
-    DEBUG       = (bool, False),
-    EMAIL_USE_TLS = (bool, True),
+    DEBUG=(bool, False),  # Default False for DEBUG
+    EMAIL_USE_TLS=(bool, True),  # Default True for EMAIL_USE_TLS
+    DATABASE_URL=(str, ''),  # Define DATABASE_URL explicitly as str
 )
 
-# 2) Read the .env file from project root:
+# 2) Read the .env file from project root (adjust BASE_DIR accordingly)
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # ── SECURITY ───────────────────────────────────────────────────────────────────
@@ -23,8 +27,11 @@ DEBUG        = env('DEBUG')
 ALLOWED_HOSTS = [
     'btamluniverse.pythonanywhere.com',
     'btamluniverse.vercel.app',
-    'btamluniverse-gqtqmjqz6-mustapha-s-projects-72030092.vercel.app'
-    'btamluniverse-git-main-mustapha-s-projects-72030092.vercel.app'
+    'vercel.app',
+    '.now.sh'
+     '127.0.0.1'
+     'localhost'
+     
 
 ]
 
@@ -73,13 +80,17 @@ TEMPLATES = [
 
 # ── DATABASE ───────────────────────────────────────────────────────────────────
 
+import dj_database_url
+
+# Database settings
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
+        default=env('DATABASE_URL'),  # Use the DATABASE_URL from env
         conn_max_age=600,
         ssl_require=True
     )
 }
+
 # ── PASSWORD VALIDATION ────────────────────────────────────────────────────────
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -96,10 +107,13 @@ USE_L10N      = True
 USE_TZ        = True
 
 # ── STATIC & MEDIA ─────────────────────────────────────────────────────────────
-STATIC_URL    = 'main'
-STATIC_ROOT   = BASE_DIR / 'public'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # This should be a list
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/uploads/'
+
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ── CKEDITOR 5 ─────────────────────────────────────────────────────────────────

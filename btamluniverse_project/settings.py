@@ -104,8 +104,8 @@ USE_TZ        = True
 # ── STATIC & MEDIA ─────────────────────────────────────────────────────────────
 # Replace your current STATIC settings with these
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles_build' / 'static'
 
 # Change the WhiteNoise storage class
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'

@@ -23,6 +23,7 @@ DEBUG        = env('DEBUG')
 ALLOWED_HOSTS = [
     'btamluniverse.pythonanywhere.com',
     'btamluniverse.vercel.app',
+    '127.0.0.1',
 ]
 
 # ── APPLICATION DEFINITION ────────────────────────────────────────────────────

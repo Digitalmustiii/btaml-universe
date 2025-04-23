@@ -104,7 +104,8 @@ USE_TZ        = True
 # ── STATIC & MEDIA ─────────────────────────────────────────────────────────────
 # Replace your current STATIC settings with these
 # Serve directly from your GitHub via jsDelivr:
-STATIC_URL = "https://raw.githubusercontent.com/Digitalmustiii/btamluniverse/main/static/"
+STATIC_URL = "https://Digitalmustiii.github.io/btamluniverse/"
+
 
 
 

@@ -108,7 +108,6 @@ STATIC_URL = "https://Digitalmustiii.github.io/btamluniverse/"
 
 
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

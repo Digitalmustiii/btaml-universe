@@ -22,7 +22,7 @@ env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # ── SECURITY ───────────────────────────────────────────────────────────────────
 SECRET_KEY   = env('DJANGO_SECRET_KEY', default='your-default-secret-key')
-DEBUG        = env('DEBUG')
+DEBUG        = False
 ALLOWED_HOSTS = [
     'btamluniverse.pythonanywhere.com',
     'btamluniverse.vercel.app',

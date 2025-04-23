@@ -1,0 +1,238 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<style>
+    /* Legal Pages Styling */
+    .legal-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+        font-family: 'Roboto', 'Segoe UI', sans-serif;
+        color: #333;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+    }
+    
+    .page-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+        color: #1D5C2E;
+    }
+    
+    .page-header h1:after {
+        content: '';
+        position: absolute;
+        width: 60%;
+        height: 4px;
+        background-color: #4CAF50;
+        bottom: -10px;
+        left: 20%;
+    }
+    
+    .last-updated {
+        font-size: 0.9rem;
+        color: #666;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .legal-section {
+        margin-bottom: 2.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .legal-section h2 {
+        color: #1D5C2E;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .legal-section h3 {
+        color: #2A8C40;
+        font-size: 1.25rem;
+        margin: 1.5rem 0 0.75rem;
+    }
+    
+    .legal-section p, .legal-section li {
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+    
+    .legal-section ul, .legal-section ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .legal-section li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight-box {
+        background-color: #f9f9f9;
+        border-left: 4px solid #4CAF50;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 5px;
+    }
+    
+    .highlight-box p:last-child {
+        margin-bottom: 0;
+    }
+    
+    .contact-details {
+        background-color: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+        text-align: center;
+    }
+    
+    .contact-details a {
+        color: #2A8C40;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .contact-details a:hover {
+        text-decoration: underline;
+    }
+    
+    .legal-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .legal-links a {
+        color: #2A8C40;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-radius: 4px;
+    }
+    
+    .legal-links a:hover {
+        background-color: #f0f0f0;
+        color: #1D5C2E;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .legal-container {
+            padding: 1.5rem 1rem 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+        }
+        
+        .legal-section h2 {
+            font-size: 1.3rem;
+        }
+        
+        .legal-section h3 {
+            font-size: 1.15rem;
+        }
+        
+        .legal-links {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+
+<div class="legal-container">
+    <div class="page-header">
+        <h1>Investment Disclaimers</h1>
+    </div>
+    
+    <div class="last-updated">
+        Last Updated: April 2025
+    </div>
+    
+    <div class="legal-section">
+        <h2>1. General Investment Disclaimer</h2>
+        <p>The information provided by BTAML Universe ("we," "us," or "our") on our website is for general informational purposes only. All information on the site is provided in good faith, however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.</p>
+        
+        <div class="highlight-box">
+            <p>Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred as a result of the use of the site or reliance on any information provided on the site. Your use of the site and your reliance on any information on the site is solely at your own risk.</p>
+        </div>
+    </div>
+    
+    <div class="legal-section">
+        <h2>2. Not Financial Advice</h2>
+        <p>The content on our website is not intended to be investment advice. It is for informational purposes only and should not be used as a basis for making investment decisions. We are not registered investment advisors.</p>
+        
+        <h3>2.1 No Recommendations</h3>
+        <p>The information presented on our website should not be construed as recommendations for or against any investment strategy. Always consult with a qualified professional before making any investment decisions.</p>
+        
+        <h3>2.2 Individual Considerations</h3>
+        <p>All investment strategies and investments involve risk. The appropriateness of a particular investment or strategy will depend on an individual's circumstances and objectives. The information provided does not take into account the specific objectives, financial situation, or particular needs of any specific individual.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>3. Past Performance</h2>
+        <p>Past performance is not indicative of future results. Any historical returns, expected returns, or probability projections may not reflect actual future performance.</p>
+        <p>Any investment information contained on our website may not be suitable for all investors and investors should make their own investment decisions using their own independent advisors. No representations are being made that any investment will or is likely to achieve profits or losses similar to those shown.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>4. Risk Disclosure</h2>
+        <p>Investing in financial instruments involves a high degree of risk and is not suitable for all investors. The value of investments can go down as well as up, and investors may get back less than they invested.</p>
+        
+        <h3>4.1 Market Risk</h3>
+        <p>Market risks include political, regulatory, economic, social, and health crises that can disrupt markets in unpredictable ways. We cannot guarantee protection against these risks.</p>
+        
+        <h3>4.2 Technical Analysis</h3>
+        <p>Any references to technical analysis, indicators, charts, or graphs are for informational purposes only and should not be relied upon when making investment decisions.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>5. Third-Party Content</h2>
+        <p>Our website may contain references or links to third-party content, which we do not control or maintain. We are not responsible for the content of any third-party site or any link contained in a third-party site. The inclusion of any link does not imply endorsement, approval, or control by us of the site.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>6. International Use</h2>
+        <p>Our website is intended for use by residents of jurisdictions where such use would not be contrary to local laws or regulations. It is your responsibility to ensure that your use of our website complies with the laws of your jurisdiction.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>7. Changes to This Disclaimer</h2>
+        <p>We may update this Investment Disclaimer from time to time. Any changes will be posted on this page with an updated revision date. We encourage you to review this Investment Disclaimer periodically to stay informed about how we are protecting our investors.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>8. Contact Us</h2>
+        <p>If you have any questions or concerns about this Investment Disclaimer, please contact us at:</p>
+        
+        <div class="contact-details">
+            <p>
+                <strong>Email:</strong> <a href="mailto:consultbtaml@gmail.com">consultbtaml@gmail.com</a><br>
+                <strong>Phone:</strong> +86(0)15810743803 | +86(0)13269127008
+            </p>
+        </div>
+    </div>
+    
+    <div class="legal-links">
+        
+        <a href="{% url 'terms' %}">Terms of Use</a>
+        <a href="{% url 'privacy' %}">Privacy Policy</a>
+        <a href="{% url 'compliance' %}">Regulatory Compliance</a>
+    </div>
+</div>
+{% endblock %}

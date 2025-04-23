@@ -1,0 +1,252 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<style>
+    /* Legal Pages Styling */
+    .legal-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+        font-family: 'Roboto', 'Segoe UI', sans-serif;
+        color: #333;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+    }
+    
+    .page-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+        color: #1D5C2E;
+    }
+    
+    .page-header h1:after {
+        content: '';
+        position: absolute;
+        width: 60%;
+        height: 4px;
+        background-color: #4CAF50;
+        bottom: -10px;
+        left: 20%;
+    }
+    
+    .last-updated {
+        font-size: 0.9rem;
+        color: #666;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .legal-section {
+        margin-bottom: 2.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .legal-section h2 {
+        color: #1D5C2E;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .legal-section h3 {
+        color: #2A8C40;
+        font-size: 1.25rem;
+        margin: 1.5rem 0 0.75rem;
+    }
+    
+    .legal-section p, .legal-section li {
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+    
+    .legal-section ul, .legal-section ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .legal-section li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .highlight-box {
+        background-color: #f9f9f9;
+        border-left: 4px solid #4CAF50;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 5px;
+    }
+    
+    .highlight-box p:last-child {
+        margin-bottom: 0;
+    }
+    
+    .contact-details {
+        background-color: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+        text-align: center;
+    }
+    
+    .contact-details a {
+        color: #2A8C40;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .contact-details a:hover {
+        text-decoration: underline;
+    }
+    
+    .legal-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e0e0e0;
+    }
+    
+    .legal-links a {
+        color: #2A8C40;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-radius: 4px;
+    }
+    
+    .legal-links a:hover {
+        background-color: #f0f0f0;
+        color: #1D5C2E;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .legal-container {
+            padding: 1.5rem 1rem 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+        }
+        
+        .legal-section h2 {
+            font-size: 1.3rem;
+        }
+        
+        .legal-section h3 {
+            font-size: 1.15rem;
+        }
+        
+        .legal-links {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+
+<div class="legal-container">
+    <div class="page-header">
+        <h1>Regulatory Compliance</h1>
+    </div>
+    
+    <div class="last-updated">
+        Last Updated: April 2025
+    </div>
+    
+    <div class="legal-section">
+        <h2>1. Introduction</h2>
+        <p>BTAML Universe ("we," "us," or "our") is committed to conducting business in accordance with all applicable laws, rules, and regulations. This Regulatory Compliance page outlines our approach to compliance with various regulatory frameworks that may apply to our operations.</p>
+        <p>Please note that this page is for general informational purposes only and does not constitute legal advice. Regulatory requirements may vary by jurisdiction and change over time.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>2. Financial Services Regulations</h2>
+        <p>As a provider of information related to investments and financial markets, we adhere to applicable financial services regulations. However, we do not provide regulated financial services, investment advice, or act as an investment advisor unless explicitly stated and properly licensed to do so.</p>
+        
+        <h3>2.1 Non-Regulated Activities</h3>
+        <p>Our primary activities include providing general information, educational content, and analytical tools. These activities are typically not subject to financial services regulations, but we nevertheless strive to maintain high standards of accuracy and transparency.</p>
+        
+        <h3>2.2 Regulated Activities</h3>
+        <p>In instances where we engage in activities that may be subject to financial services regulations, we obtain the necessary licenses and approvals from relevant regulatory authorities. Details of any such licenses will be prominently displayed on our website and in our communications.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>3. Anti-Money Laundering (AML) Compliance</h2>
+        <p>We are committed to preventing money laundering and the funding of terrorist or criminal activities. We implement appropriate AML procedures when required, which may include:</p>
+        <ul>
+            <li>Customer due diligence and Know Your Customer (KYC) procedures</li>
+            <li>Transaction monitoring for suspicious activities</li>
+            <li>Record-keeping of relevant transactions and customer information</li>
+            <li>Reporting suspicious activities to relevant authorities</li>
+            <li>Regular training for our staff on AML procedures</li>
+        </ul>
+    </div>
+    
+    <div class="legal-section">
+        <h2>4. Data Protection and Privacy</h2>
+        <p>We comply with applicable data protection and privacy laws, including:</p>
+        <ul>
+            <li>Obtaining appropriate consent for collecting, using, and sharing personal data</li>
+            <li>Implementing technical and organizational measures to protect personal data</li>
+            <li>Providing individuals with access to their personal data and the ability to correct or delete it</li>
+            <li>Honoring individuals' data protection rights</li>
+            <li>Notifying individuals and authorities of data breaches when required</li>
+        </ul>
+        <p>For more information on how we handle personal data, please refer to our <a href="{% url 'privacy' %}" style="color: #2A8C40;">Privacy Policy</a>.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>5. Consumer Protection</h2>
+        <p>We are committed to protecting consumers by:</p>
+        <ul>
+            <li>Providing clear, accurate, and transparent information about our services</li>
+            <li>Ensuring fair treatment of all customers</li>
+            <li>Maintaining a robust complaint handling process</li>
+            <li>Avoiding unfair, deceptive, or abusive practices</li>
+        </ul>
+    </div>
+    
+    <div class="legal-section">
+        <h2>6. International Compliance</h2>
+        <p>We recognize that our website may be accessed by individuals from various jurisdictions. While we make efforts to comply with applicable laws and regulations, it is the responsibility of users to ensure that their use of our website and services complies with the laws and regulations of their own jurisdiction.</p>
+    </div>
+    
+    <div class="legal-section">
+        <h2>7. Regulatory Updates</h2>
+        <p>Regulatory requirements are subject to change. We monitor relevant legal and regulatory developments and update our policies and procedures as necessary to maintain compliance.</p>
+        
+        <div class="highlight-box">
+            <p>We encourage users to check this page periodically for updates. Significant changes to our regulatory compliance practices will be communicated through our website and, where appropriate, directly to registered users.</p>
+        </div>
+    </div>
+    
+    <div class="legal-section">
+        <h2>8. Reporting Concerns</h2>
+        <p>If you have concerns regarding our compliance with applicable laws and regulations, or if you believe our content or services may violate regulatory requirements, please contact us using the information provided below.</p>
+        
+        <div class="contact-details">
+            <p>
+                <strong>Email:</strong> <a href="mailto:consultbtaml@gmail.com">consultbtaml@gmail.com</a><br>
+                <strong>Phone:</strong> +86(0)15810743803 | +86(0)13269127008
+            </p>
+        </div>
+    </div>
+    
+    <div class="legal-links">
+      <a href="{% url 'terms' %}">Terms of Use</a>
+        <a href="{% url 'privacy' %}">Privacy Policy</a>
+        <a href="{% url 'investment' %}">Investment Disclaimers</a>
+    </div>
+</div>
+{% endblock %}

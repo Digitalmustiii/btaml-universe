@@ -1,0 +1,201 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<style>
+/* Business Category News Styles */
+.business-news-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Header Styling */
+.business-news-heading {
+  color: #1D5C2E;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-size: 2rem;
+  position: relative;
+}
+
+.business-news-heading::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 3px;
+  background-color: #4CAF50;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Grid layout with 4 cards per row */
+.business-news-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.business-news-col {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 30px;
+}
+
+/* Article Card Styling */
+.business-article-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #e8e8e8;
+}
+
+.business-article-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  border-color: #2A8C40;
+}
+
+/* Image container */
+.business-article-image-container {
+  width: 100%;
+  padding-top: 65%; /* Aspect ratio */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Image styling */
+.business-article-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.business-article-card:hover .business-article-image {
+  transform: scale(1.08);
+}
+
+.business-article-body {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.business-article-title {
+  color: #1D5C2E;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.business-article-date {
+  color: #6c757d;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.business-no-articles {
+  text-align: center;
+  color: #6c757d;
+  font-size: 1.2rem;
+  padding: 3rem 0;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.business-article-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .business-news-col {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+@media (max-width: 992px) {
+  .business-news-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  .business-news-heading {
+    font-size: 1.8rem;
+  }
+  
+  .business-article-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .business-news-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .business-news-heading {
+    font-size: 1.6rem;
+  }
+  
+  .business-article-image-container {
+    padding-top: 56.25%; /* 16:9 aspect ratio for mobile */
+  }
+}
+</style>
+
+<div class="container business-news-container py-5">
+  <h2 class="business-news-heading">{{ category_display }}</h2>
+  
+  <div class="business-news-row">
+    {% for article in business_news %}
+      <div class="business-news-col">
+        <a href="{% url 'business_detail' article.pk %}" class="business-article-link">
+          <div class="business-article-card">
+            {% if article.thumbnail %}
+              <div class="business-article-image-container">
+                <img src="{{ article.thumbnail.url }}" 
+                     class="business-article-image" 
+                     alt="{{ article.title }}">
+              </div>
+            {% endif %}
+            <div class="business-article-body">
+              <h5 class="business-article-title">{{ article.title }}</h5>
+              <p class="business-article-date">{{ article.published_date|date:"F j, Y" }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <div class="business-no-articles">
+          No articles found in {{ category_display }}.
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

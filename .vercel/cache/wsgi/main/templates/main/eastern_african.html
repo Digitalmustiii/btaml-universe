@@ -1,0 +1,191 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<style>
+/* Eastern African Region News Styles */
+.region-news-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Header Styling */
+.region-news-heading {
+  color: #1D5C2E;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-size: 2rem;
+  position: relative;
+}
+
+.region-news-heading::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 3px;
+  background-color: #4CAF50;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Grid layout with 4 cards per row */
+.region-news-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.region-news-col {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+/* Article Card Styling - Made Square */
+.region-article-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+}
+
+.region-article-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border-color: #2A8C40;
+}
+
+/* Image container */
+.region-article-image-container {
+  width: 100%;
+  padding-top: 65%; /* Aspect ratio */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Image styling */
+.region-article-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.region-article-card:hover .region-article-image {
+  transform: scale(1.08);
+}
+
+.region-article-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.region-article-title {
+  color: #1D5C2E;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.region-article-date {
+  color: #6c757d;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.region-no-articles {
+  text-align: center;
+  color: #6c757d;
+  font-size: 1.2rem;
+  padding: 3rem 0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin: 2rem 0;
+}
+
+.article-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .region-news-col {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+@media (max-width: 992px) {
+  .region-news-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  .region-news-heading {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .region-news-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .region-news-heading {
+    font-size: 1.6rem;
+  }
+}
+</style>
+<div class="container region-news-container py-5">
+  <h2 class="region-news-heading">Eastern African Region News</h2>
+  
+  <div class="region-news-row">
+    {% for article in regional_news %}
+      <div class="region-news-col">
+        <a href="{% url 'regional_article_detail' article.pk %}" class="article-link">
+          <div class="region-article-card">
+            {% if article.thumbnail %}
+              <div class="region-article-image-container">
+                <img src="{{ article.thumbnail.url }}" 
+                     class="region-article-image" 
+                     alt="{{ article.title }}">
+              </div>
+            {% endif %}
+            <div class="region-article-body">
+              <h5 class="region-article-title">{{ article.title }}</h5>
+              <p class="region-article-date">{{ article.published_date|date:"F j, Y" }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <div class="region-no-articles">
+          No articles found for this region.
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -25,8 +25,8 @@ SECRET_KEY   = env('DJANGO_SECRET_KEY', default='your-default-secret-key')
 DEBUG        = False
 ALLOWED_HOSTS = [
     'btamluniverse.pythonanywhere.com',
-    'btamluniverse.up.railway.app',
-    'railway.app',
+    'btamluniverse.vercel.app',
+    'vercel.app',
 ]
 
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -105,6 +106,7 @@ USE_TZ        = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 MEDIA_URL = '/media/'

@@ -1,0 +1,331 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<style>
+    /* Services Page Styling */
+    .services-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+        font-family: 'Roboto', 'Segoe UI', sans-serif;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        color: #1D5C2E;
+    }
+    
+    .page-header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .page-header h1:after {
+        content: '';
+        position: absolute;
+        width: 60%;
+        height: 4px;
+        background-color: #4CAF50;
+        bottom: -10px;
+        left: 20%;
+    }
+    
+    .intro-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        max-width: 900px;
+        margin: 0 auto 3rem;
+        text-align: center;
+        color: #333;
+    }
+    
+    .company-name {
+        color: #2A8C40;
+        font-weight: 700;
+    }
+    
+    .service-section {
+        margin-bottom: 3.5rem;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        background-color: #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-left: 5px solid #4CAF50;
+    }
+    
+    .service-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-title {
+        display: flex;
+        align-items: center;
+        color: #1D5C2E;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .service-title h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0;
+    }
+    
+    .service-icon {
+        font-size: 1.8rem;
+        margin-right: 0.75rem;
+        color: #2A8C40;
+    }
+    
+    .service-content ul {
+        padding-left: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .service-content li {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+        position: relative;
+    }
+    
+    .service-content .main-list > li {
+        font-size: 1.05rem;
+    }
+    
+    .service-content .sub-list {
+        columns: 2;
+        margin-top: 0.75rem;
+        padding-left: 1.5rem;
+    }
+    
+    .service-content .sub-list li {
+        margin-bottom: 0.5rem;
+        break-inside: avoid;
+    }
+    
+    .strong-text {
+        color: #1D5C2E;
+        font-weight: 600;
+    }
+    
+    .emphasis-text {
+        font-style: italic;
+        color: #2A8C40;
+    }
+    
+    .contact-section {
+        background-color: #f9f9f9;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 3rem;
+    }
+    
+    .contact-title {
+        color: #1D5C2E;
+        margin-bottom: 1.25rem;
+    }
+    
+    .contact-info {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    
+    .contact-info a {
+        color: #2A8C40;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    
+    .contact-info a:hover {
+        color: #1D5C2E;
+        text-decoration: underline;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .page-header h1 {
+            font-size: 2.2rem;
+        }
+        
+        .service-content .sub-list {
+            columns: 1;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .services-container {
+            padding: 1.5rem 1rem;
+        }
+        
+        .page-header h1 {
+            font-size: 1.8rem;
+        }
+        
+        .service-section {
+            padding: 1.5rem;
+        }
+        
+        .service-title h2 {
+            font-size: 1.4rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .intro-text {
+            font-size: 1rem;
+        }
+        
+        .service-title {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .service-icon {
+            margin-bottom: 0.5rem;
+        }
+    }
+</style>
+
+<div class="services-container">
+    <div class="page-header">
+        <h1>Our Services</h1>
+    </div>
+    
+    <div class="intro-text">
+        <p><strong>Welcome to <span class="company-name">BTAML Universe</span> – Your Strategic Gateway to African Insight and Global Opportunities</strong></p>
+        <p>We provide a wide range of services that empower individuals, organizations, and governments with data-driven insights, strategic tools, and regional intelligence. Whether you're an investor exploring emerging industries in Africa, a student seeking global scholarship opportunities, or a business leader looking to enter new markets – <em>we've got you covered</em>.</p>
+    </div>
+    
+    <div class="service-section">
+        <div class="service-title">
+            <span class="service-icon">🔍</span>
+            <h2>Strategic Business Analysis</h2>
+        </div>
+        <div class="service-content">
+            <ul class="main-list">
+                <li><span class="strong-text">SWOT Analysis:</span> Evaluate internal <span class="emphasis-text">Strengths</span> and <span class="emphasis-text">Weaknesses</span> alongside external <span class="emphasis-text">Opportunities</span> and <span class="emphasis-text">Threats</span> for clearer strategy and growth.</li>
+                <li><span class="strong-text">MOST Analysis:</span> Align your <span class="emphasis-text">Mission, Objectives, Strategies, and Tactics</span> with actionable goals for business transformation and policy success.</li>
+                <li><span class="strong-text">PESTLE Analysis:</span> Understand the <span class="emphasis-text">Political, Economic, Social, Technological, Legal, and Environmental</span> factors influencing your operations across Africa.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="service-section">
+        <div class="service-title">
+            <span class="service-icon">💡</span>
+            <h2>Creative & Operational Thinking</h2>
+        </div>
+        <div class="service-content">
+            <ul class="main-list">
+                <li><span class="strong-text">Brainstorming Sessions:</span> Collaborate with our experts to generate ideas for products, solutions, strategies, and social programs.</li>
+                <li><span class="strong-text">Mind Mapping:</span> Visualize thoughts, plan projects, and discover connections using structured, easy-to-understand diagrams.</li>
+                <li><span class="strong-text">Process Design:</span> Improve or redesign your business and operational workflows to enhance productivity and sustainability.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="service-section">
+        <div class="service-title">
+            <span class="service-icon">🧪</span>
+            <h2>Research & Data Collection</h2>
+        </div>
+        <div class="service-content">
+            <ul class="main-list">
+                <li><span class="strong-text">Field Research & Surveys:</span> Conduct in-depth research across <span class="emphasis-text">West, East, Central, North, and Southern Africa</span>, gathering grassroots-level data.</li>
+                <li><span class="strong-text">Voice Recording in African Languages:</span> We produce professional recordings in languages like <span class="emphasis-text">Yoruba, Hausa, Swahili, Zulu, Amharic</span>, and more.</li>
+                <li><span class="strong-text">Sentiment & Opinion Polls:</span> Collect community and market insights through customized polling and feedback tools.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="service-section">
+        <div class="service-title">
+            <span class="service-icon">🌍</span>
+            <h2>Regional Intelligence & Industry Monitoring</h2>
+        </div>
+        <div class="service-content">
+            <ul class="main-list">
+                <li><span class="strong-text">Regional News Coverage:</span> Receive news and updates across all five African regions, with emphasis on socio-political trends and economic developments.</li>
+                <li>
+                    <span class="strong-text">Business & Sectoral Insights:</span> We provide deep-dive analysis in:
+                    <ul class="sub-list">
+                        <li>Agriculture & Agribusiness</li>
+                        <li>Mining & Energy</li>
+                        <li>Technology & Fintech</li>
+                        <li>Infrastructure & Logistics</li>
+                        <li>Sustainable Business Practices</li>
+                        <li>Emerging Industries</li>
+                    </ul>
+                </li>
+                <li><span class="strong-text">Market Entry Strategies:</span> Navigate regulatory environments, cultural nuances, and industry trends with strategic roadmaps designed for success.</li>
+                <li><span class="strong-text">Risk Management Consulting:</span> Evaluate and manage operational, political, and financial risks across the continent.</li>
+                <li><span class="strong-text">Market Trends & Analysis:</span> We monitor fast-moving market dynamics to help you anticipate shifts and make informed decisions.</li>
+                <li><span class="strong-text">Case Studies:</span> Learn from the success and setbacks of businesses and innovations across Africa.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="service-section">
+        <div class="service-title">
+            <span class="service-icon">🎓</span>
+            <h2>Scholarship & Opportunity Alerts</h2>
+        </div>
+        <div class="service-content">
+            <p>We bring you:</p>
+            <ul class="main-list">
+                <li>Fully-funded scholarship opportunities worldwide</li>
+                <li>Global academic programs and fellowships for Africans</li>
+                <li>Alerts on deadlines, eligibility, and application strategies</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="service-section">
+        <div class="service-title">
+            <span class="service-icon">🔐</span>
+            <h2>Security & Intelligence Updates</h2>
+        </div>
+        <div class="service-content">
+            <ul class="main-list">
+                <li>Peace and conflict zone updates</li>
+                <li>Cybersecurity news and digital risk trends</li>
+                <li>Regional safety alerts, travel advisories, and crisis monitoring</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="service-section">
+        <div class="service-title">
+            <span class="service-icon">📊</span>
+            <h2>Customized Research & Consulting</h2>
+        </div>
+        <div class="service-content">
+            <ul class="main-list">
+                <li>Bespoke research reports by region or industry</li>
+                <li>Investment feasibility studies and white papers</li>
+                <li>One-on-one consulting and capacity-building workshops</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="contact-section">
+        <h2 class="contact-title">📞 Let's Connect</h2>
+        <div class="contact-info">
+            <p>Want to collaborate or learn more about how we can support your goals?</p>
+            <p>
+                <strong>Email:</strong> <a href="mailto:consultbtaml@gmail.com">consultbtaml@gmail.com</a><br>
+                <strong>Phone:</strong> +86(0)15810743803 | +86(0)13269127008
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

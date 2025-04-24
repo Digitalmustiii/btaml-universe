@@ -116,8 +116,6 @@ CKEDITOR_5_UPLOAD_PATH = "uploads/"
 
 CKEDITOR_5_CONFIGS = {
     'default': {
-        "editor": "classic",
-    "cdn_url": "https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js",
         'toolbar': {
             'items': [
                 'heading', '|',
